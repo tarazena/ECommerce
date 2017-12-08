@@ -1,17 +1,21 @@
 <template>
   <div id="app">
+    <navbar />
     <router-view/>
   </div>
 </template>
 
 <script>
+import Navigation from './components/Navigation'
+
 export default {
   name: 'app',
   data () {
     return {
       hoverOver: false
     }
-  }
+  },
+  components: { 'navbar': Navigation }
 }
 </script>
 
