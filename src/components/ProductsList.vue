@@ -1,21 +1,28 @@
 <template>
     <div class="container-fluid">
-        <productItem v-for="item in productItemList" :key="item"/>
+        <productItem v-for="(item, index) in productItemList" :item="item" :key="index" />
     </div>
 </template>
 
 <script>
 import ProductItem from './ProductItem'
+require('../assets/product-items.json')
 
 export default {
   name: 'product-list',
   data () {
     return {
-      productItemList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 1, 1, 1]
+      productItemList: []
     }
   },
   components: {
     productItem: ProductItem
+  },
+  created: function () {
+    $.getJSON('./src/assets/product-items.json')
+    .done(info => {
+      this.productItemList = info
+    })
   }
 }
 </script>

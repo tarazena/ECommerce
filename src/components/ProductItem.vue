@@ -3,8 +3,9 @@
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding-top: 10px; padding-bottom: 10px;">
       <div class="card-block">
         <div class="card">
-          <img class="card-img-top img-fluid" src="http://via.placeholder.com/280x200" alt="Card image cap">
+          <img class="card-img-top img-fluid" :src="item.image" alt="Card image cap" style="width:200px; height: 200px;">
         </div>
+        <h1>{{item.company}} {{item.name}}</h1>
       </div>
     </div>
   </div>
@@ -12,7 +13,8 @@
 
 <script>
 export default {
-  name: 'product-item'
+  name: 'product-item',
+  props: ['item']
 }
 </script>
 
