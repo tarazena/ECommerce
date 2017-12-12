@@ -19,7 +19,13 @@ export default {
     productItem: ProductItem
   },
   created: function () {
-    $.getJSON('http://localhost/v1/getproductlist')
+    var url
+    if (process.env.NODE_ENV === 'development') {
+      url = 'http://localhost/v1/getproductlist'
+    } else {
+      url = 'http://api-ecommerce.azurewebsites.net/v1/getproductlist'
+    }
+    $.getJSON(url)
     .done(info => {
       this.productItemList = info
     })
