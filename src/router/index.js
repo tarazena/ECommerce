@@ -13,11 +13,6 @@ export default new Router({
       component: ProductsList
     },
     {
-      path: '/home',
-      name: 'ProductsList',
-      component: ProductsList
-    },
-    {
       path: '/protifolio',
       name: 'ProtifolioPage',
       component: ProtifolioPage

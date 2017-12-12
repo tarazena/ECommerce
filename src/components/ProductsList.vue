@@ -19,7 +19,7 @@ export default {
     productItem: ProductItem
   },
   created: function () {
-    $.getJSON('http://api-ecommerce.azurewebsites.net/v1/getproductlist')
+    $.getJSON('http://localhost/v1/getproductlist')
     .done(info => {
       this.productItemList = info
     })

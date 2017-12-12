@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import NavBar from './components/Navigation.vue'
 import router from './router'
+import './assets/style.css'
 
 Vue.config.productionTip = false
 
