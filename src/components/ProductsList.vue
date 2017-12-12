@@ -1,34 +1,23 @@
 <template>
     <div class="container-fluid">
-        <productItem v-for="(item, index) in productItemList" :item="item" :key="index" />
+        <productItem v-for="(item, index) in products" :item="item" :key="index" />
     </div>
 </template>
 
 <script>
 import ProductItem from './ProductItem'
-require('../assets/product-items.json')
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'product-list',
-  data () {
-    return {
-      productItemList: []
-    }
-  },
   components: {
     productItem: ProductItem
   },
-  created: function () {
-    var url
-    if (process.env.NODE_ENV === 'development') {
-      url = 'http://localhost/v1/getproductlist'
-    } else {
-      url = 'http://api-ecommerce.azurewebsites.net/v1/getproductlist'
-    }
-    $.getJSON(url)
-    .done(info => {
-      this.productItemList = info
-    })
+  computed: mapGetters({
+    products: 'allProducts'
+  }),
+  created () {
+    this.$store.dispatch('getAllProducts')
   }
 }
 </script>

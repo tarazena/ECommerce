@@ -12,17 +12,8 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
             <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item active">
-            <router-link  class="nav-link" :to="`/`" @click="toggleMenu()" style="padding: 15px">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" :to="`/protifolio`" style="padding: 15px">Protifolio</router-link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="" style="padding: 15px">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="" style="padding: 15px">Cart</a>
+              <li v-for="(route, index) in routes" :key="index" class="nav-item" @click="toggleMenu()">
+            <router-link  class="nav-link" :to="route.route" style="padding: 15px">{{route.name}}</router-link>
           </li>
           <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="border-color:#337ab7;"> -->
             </ul>
@@ -42,7 +33,29 @@ export default {
   name: 'navbar',
   methods: {
     toggleMenu () {
-      $('#navMenu').collapse('hide')
+      $('#navbar').collapse('hide')
+    }
+  },
+  data () {
+    return {
+      routes: [
+        {
+          route: '/',
+          name: 'Home'
+        },
+        {
+          route: 'protifolio',
+          name: 'Protifolio'
+        },
+        {
+          route: '/',
+          name: 'Contact'
+        },
+        {
+          route: '/',
+          name: 'Cart'
+        }
+      ]
     }
   }
 }

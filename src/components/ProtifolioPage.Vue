@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid">
      <h1>Protifolio</h1> 
   </div>
 </template>

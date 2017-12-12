@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Vuex from 'vuex'
 import ProductsList from '@/components/ProductsList'
 import ProtifolioPage from '@/components/ProtifolioPage'
 
+Vue.use(Vuex)
 Vue.use(Router)
 
 export default new Router({
