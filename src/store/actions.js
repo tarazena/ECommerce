@@ -5,3 +5,7 @@ export const addToCart = ({ commit }, product) => {
     product: product
   })
 }
+
+export const getCart = ({ commit }) => {
+  commit(types.GET_CART)
+}
