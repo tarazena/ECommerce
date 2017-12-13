@@ -15,14 +15,7 @@
               <li v-for="(route, index) in routes" :key="index" class="nav-item" @click="toggleMenu()">
             <router-link  class="nav-link" :to="route.route" style="padding: 15px">{{route.name}}</router-link>
           </li>
-          <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="border-color:#337ab7;"> -->
-            </ul>
-            <!-- <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-static-top/">Static top</a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-            </ul> -->
-            
+          </ul>
           </div><!--/.nav-collapse -->
           
         </div>
@@ -52,7 +45,7 @@ export default {
           name: 'Contact'
         },
         {
-          route: '/',
+          route: '/cart',
           name: 'Cart'
         }
       ]

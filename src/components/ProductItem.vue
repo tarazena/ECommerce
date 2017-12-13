@@ -8,7 +8,7 @@
             <h4 class="card-title">{{item.Company}} {{item.Name}}</h4>
             <p class="card-text">Memory: {{item.Memory}}</p>
             <p class="card-text">Price: {{item.Price}}$</p>
-            <a href="#" class="btn btn-primary">View Details</a>
+            <button class="btn btn-primary" @click="addToCart(item)">Add To Cart</button>
           </div>
         </div>
       </div>
@@ -17,9 +17,14 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'product-item',
-  props: ['item']
+  props: ['item'],
+  methods: mapActions([
+    'addToCart'
+  ])
 }
 </script>
 

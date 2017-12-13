@@ -1,1 +1,3 @@
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
+export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART'
+export const GET_CART = 'GET_CART'
