@@ -1,9 +1,8 @@
 import * as types from '../mutation-types'
 
 var url
-var isWin = /^win/.test(process.platform)
 
-if (process.env.NODE_ENV === 'development' && isWin) {
+if (process.env.NODE_ENV === 'development') {
   url = 'http://localhost/v1/getproductlist'
 } else {
   url = 'http://api-ecommerce.azurewebsites.net/v1/getproductlist'

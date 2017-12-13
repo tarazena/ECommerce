@@ -12,9 +12,7 @@ const getters = {
 
 // mutations
 const mutations = {
-  [types.ADD_PRODUCT_TO_CART] (state, {
-    product
-  }) {
+  [types.ADD_PRODUCT_TO_CART] (state, {product}) {
     state.added.push(product)
   }
 }
