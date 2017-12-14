@@ -86,6 +86,5 @@ export default {
 	
 	table#cart tfoot td{display:block; }
 	table#cart tfoot td .btn{display:block;}
-	
 }
 </style>
