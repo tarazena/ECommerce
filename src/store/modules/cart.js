@@ -21,8 +21,8 @@ const mutations = {
       }
     })
     if (obj.length > 0) {
-      _.find(state.added, function (storedProduct) {
-        storedProduct.quantity++
+      _.forEach(obj, (prod) => {
+        prod.quantity++
       })
     } else {
       state.added.push({
