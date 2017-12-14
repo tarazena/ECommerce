@@ -20,9 +20,9 @@
 							<td class="text-center"><strong>Total 1.99</strong></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+							<td class="hidden-xs text-center"><strong>Total ${{total}}</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
@@ -38,53 +38,99 @@
 <script>
 import { mapGetters } from 'vuex'
 import CartItem from './CartItem'
+var _ = require('lodash')
 
 export default {
   name: 'Cart',
   computed: {
-    ...mapGetters({products: 'getCart'})
+    ...mapGetters({ products: 'getCart' })
   },
   components: {
     'cart-item': CartItem
   },
   created () {
     this.$store.dispatch('getCart')
+    this.$on('UpdateTotal', () => {
+      var val = 0
+      var items = this.products
+      _.forEach(items, function (product) {
+        val += product.product.price * product.quantity
+      })
+      this.total = val
+    })
+    this.$nextTick(function () {
+      var val = 0
+      var items = this.products
+      _.forEach(items, function (product) {
+        val += product.product.price * product.quantity
+      })
+      this.total = val
+    })
+  },
+  methods: {
+    updateValues: () => {
+      var val = 0
+      var items = this.products
+      _.forEach(items, function (product) {
+        val += product.product.price * product.quantity
+      })
+      this.total = val
+    }
+  },
+  data () {
+    return {
+      total: 0
+    }
   }
 }
 </script>
 
 <style>
-.table>tbody>tr>td, .table>tfoot>tr>td{
-    vertical-align: middle;
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  vertical-align: middle;
 }
 @media screen and (max-width: 600px) {
-    table#cart tbody td .form-control{
-		width:20%;
-		display: inline !important;
-	}
-	.actions .btn{
-		width:36%;
-		margin:1.5em 0;
-	}
-	
-	.actions .btn-info{
-		float:left;
-	}
-	.actions .btn-danger{
-		float:right;
-	}
-	
-	table#cart thead { display: none; }
-	table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
-	table#cart tbody tr td:first-child { background: #333; color: #fff; }
-	table#cart tbody td:before {
-		content: attr(data-th); font-weight: bold;
-		display: inline-block; width: 8rem;
-	}
-	
-	
-	
-	table#cart tfoot td{display:block; }
-	table#cart tfoot td .btn{display:block;}
+  table#cart tbody td .form-control {
+    width: 20%;
+    display: inline !important;
+  }
+  .actions .btn {
+    width: 36%;
+    margin: 1.5em 0;
+  }
+
+  .actions .btn-info {
+    float: left;
+  }
+  .actions .btn-danger {
+    float: right;
+  }
+
+  table#cart thead {
+    display: none;
+  }
+  table#cart tbody td {
+    display: block;
+    padding: 0.6rem;
+    min-width: 320px;
+  }
+  table#cart tbody tr td:first-child {
+    background: #333;
+    color: #fff;
+  }
+  table#cart tbody td:before {
+    content: attr(data-th);
+    font-weight: bold;
+    display: inline-block;
+    width: 8rem;
+  }
+
+  table#cart tfoot td {
+    display: block;
+  }
+  table#cart tfoot td .btn {
+    display: block;
+  }
 }
 </style>

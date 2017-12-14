@@ -32,6 +32,13 @@ const mutations = {
   },
   [types.GET_CART] (state) {
     return state.added
+  },
+  [types.UPDATE_QUANTITY_IN_CART] (state, payload) {
+    _.head(_.filter(state.added, (o) => {
+      if (o.product.name === payload.product.name) {
+        return o
+      }
+    })).quantity = payload.quantity
   }
 }
 

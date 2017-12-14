@@ -7,6 +7,10 @@ export const addToCart = ({ commit }, product) => {
   })
 }
 
+export const updateQuantityInCart = ({ commit }, payload) => {
+  commit(types.UPDATE_QUANTITY_IN_CART, payload)
+}
+
 export const getCart = ({ commit }) => {
   commit(types.GET_CART)
 }
