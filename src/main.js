@@ -6,6 +6,7 @@ import NavBar from './components/Navigation.vue'
 import router from './router'
 import store from './store'
 import './assets/style.css'
+import './assets/product-items.json'
 
 Vue.config.productionTip = false
 
