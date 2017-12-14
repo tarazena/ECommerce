@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="products.length > 0">
-      <div class="container">
+      <div class="container" style="background-color: white;">
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
