@@ -16,7 +16,7 @@ const getters = {
 const mutations = {
   [types.ADD_PRODUCT_TO_CART] (state, { product }) {
     var obj = _.filter(state.added, (o) => {
-      if (o.product.name === product.name) {
+      if (o.product.id === product.id) {
         return o
       }
     })
@@ -35,7 +35,7 @@ const mutations = {
   },
   [types.UPDATE_QUANTITY_IN_CART] (state, payload) {
     _.head(_.filter(state.added, (o) => {
-      if (o.product.name === payload.product.name) {
+      if (o.product.id === payload.product.id) {
         return o
       }
     })).quantity = payload.quantity
