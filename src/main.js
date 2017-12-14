@@ -8,6 +8,7 @@ import store from './store'
 import './assets/style.css'
 import './assets/product-items.json'
 
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
