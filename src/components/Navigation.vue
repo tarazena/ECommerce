@@ -3,7 +3,6 @@
     <div class="container-fluid">
           <div class="navbar-header">
             <button type="button"  class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="border-color:#337ab7;" id="navMenu">
-              <span class="badge badge-pill badge-danger">{{products.length}}</span>
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar" style="background-color: #337ab7;"></span>
               <span class="icon-bar" style="background-color: #337ab7;"></span>
@@ -16,7 +15,9 @@
               <li v-for="(route, index) in routes" :key="index" class="nav-item" @click="toggleMenu()">
             <router-link class="nav-link" :to="route.route" style="padding: 15px">{{route.name}}</router-link>
           </li>
-          <span class="badge badge-pill badge-danger">{{products.length}}</span>
+          <li class="nav-item" @click="toggleMenu()">
+            <router-link class="nav-link" :to="'/cart'" style="padding: 15px">Cart<span class="badge badge-danger badge-notify">{{products.length}}</span></router-link>
+          </li>
           </ul>
           </div><!--/.nav-collapse -->
           
@@ -36,6 +37,9 @@ export default {
   computed: {
     ...mapGetters({ products: 'getCart' })
   },
+  created () {
+    this.$store.dispatch('getCart')
+  },
   data () {
     return {
       routes: [
@@ -50,13 +54,17 @@ export default {
         {
           route: '/',
           name: 'Contact'
-        },
-        {
-          route: '/cart',
-          name: 'Cart'
         }
       ]
     }
   }
 }
 </script>
+<style>
+.badge-notify{
+   background:red;
+   position:relative;
+   left: 5px;
+}
+</style>
+

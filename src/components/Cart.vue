@@ -32,10 +32,7 @@
             </tr>
             <tr>
               <td>
-                <a 
-                  href="#" 
-                  class="btn btn-warning">
-                <i class="fa fa-angle-left"/><router-link  class="nav-link" :to='"/products"'>Continue Shopping</router-link></a>
+                <router-link  class="btn btn-warning nav-link" :to='"/products"'>Continue Shopping</router-link>
               </td>
               <td 
                 colspan="2" 
@@ -107,6 +104,11 @@ export default {
 .table > tfoot > tr > td {
   vertical-align: middle;
 }
+
+.nav-link {
+  float: left;
+}
+
 @media screen and (max-width: 600px) {
   table#cart tbody td .form-control {
     width: 20%;
@@ -114,16 +116,15 @@ export default {
   }
   .actions .btn {
     width: 36%;
-    margin: 1.5em 0;
+    margin: 10px;
+    left: -40px;
+    display: inline-block;
+    position: relative;
   }
 
-  .actions .btn-info {
-    float: left;
-  }
-  .actions .btn-danger {
-    float: right;
-  }
-
+  .nav-link {
+    float: none;
+} 
   table#cart thead {
     display: none;
   }
