@@ -16,7 +16,7 @@
             <router-link class="nav-link" :to="route.route" style="padding: 15px">{{route.name}}</router-link>
           </li>
           <li class="nav-item" @click="toggleMenu()">
-            <router-link class="nav-link" :to="'/cart'" style="padding: 15px">Cart<span class="badge badge-danger badge-notify">{{products.length}}</span></router-link>
+            <router-link class="nav-link" :to="'/cart'" style="padding: 15px">Cart<span class="badge badge-danger badge-notify" v-if="products.length > 0">{{products.length}}</span></router-link>
           </li>
           </ul>
           </div><!--/.nav-collapse -->
