@@ -27,7 +27,7 @@
           <tfoot>
             <tr class="visible-xs">
               <td class="text-center">
-                <strong>Total 1.99</strong>
+                <strong>Total ${{ total }}</strong>
               </td>
             </tr>
             <tr>
@@ -60,7 +60,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { mapGetters } from 'vuex'
 import CartItem from './CartItem'
