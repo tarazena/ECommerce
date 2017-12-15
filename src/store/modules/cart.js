@@ -39,6 +39,13 @@ const mutations = {
         return o
       }
     })).quantity = payload.quantity
+  },
+  [types.REMOVE_PRODUCT_FROM_CART] (state, payload) {
+    _.remove(state.added, (o) => {
+      if (o.product.id === payload.product.id) {
+        return o
+      }
+    })
   }
 }
 

@@ -8,8 +8,8 @@
             <h4 class="card-title">{{item.company}} {{item.name}}</h4>
             <p class="card-text">Memory: {{item.memory}}</p>
             <p class="card-text">Price: {{item.price}}$</p>
-            <button v-if="!added" class="btn btn-primary add-to-cart" @click="addToCart(item)">Add To Cart</button>
-            <button v-else class="btn btn-primary btn-success">Added</button>
+            <button v-if="!added" class="btn btn-primary add-to-cart" @click="addToCart(item); added = true">Add To Cart</button>
+            <button v-else class="btn btn-primary btn-success defaultCursor">Added</button>
           </div>
         </div>
       </div>
@@ -35,5 +35,7 @@ export default {
 </script>
 
 <style>
-
+.defaultCursor {
+  cursor:default
+}
 </style>

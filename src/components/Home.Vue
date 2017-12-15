@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
-     <h1>Protifolio</h1> 
+     <h1>Home</h1> 
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ProtifolioPage'
+  name: 'HomePage'
 }
 </script>
 

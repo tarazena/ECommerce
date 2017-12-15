@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Vuex from 'vuex'
 import ProductsList from '@/components/ProductsList'
-import ProtifolioPage from '@/components/ProtifolioPage'
+import HomePage from '@/components/Home'
 import Cart from '@/components/Cart'
 
 Vue.use(Vuex)
@@ -12,13 +12,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'ProductsList',
-      component: ProductsList
+      name: 'HomePage',
+      component: HomePage
     },
     {
-      path: '/protifolio',
-      name: 'ProtifolioPage',
-      component: ProtifolioPage
+      path: '/products',
+      name: 'ProductsList',
+      component: ProductsList
     },
     {
       path: '/cart',

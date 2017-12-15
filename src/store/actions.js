@@ -14,3 +14,7 @@ export const updateQuantityInCart = ({ commit }, payload) => {
 export const getCart = ({ commit }) => {
   commit(types.GET_CART)
 }
+
+export const removeFromCart = ({ commit }, payload) => {
+  commit(types.REMOVE_PRODUCT_FROM_CART, payload)
+}

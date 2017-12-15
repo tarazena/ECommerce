@@ -20,9 +20,9 @@
           </thead>
           <tbody>
             <cart-item 
-              v-for="(item, index) in products" 
+              v-for="(item, index) in allProducts" 
               :key="index" 
-              :cartItem="item" />
+              :cartItem="item"/>
           </tbody>
           <tfoot>
             <tr class="visible-xs">
@@ -35,7 +35,7 @@
                 <a 
                   href="#" 
                   class="btn btn-warning">
-                <i class="fa fa-angle-left"/><router-link  class="nav-link" :to='"/"'>Continue Shopping</router-link></a>
+                <i class="fa fa-angle-left"/><router-link  class="nav-link" :to='"/products"'>Continue Shopping</router-link></a>
               </td>
               <td 
                 colspan="2" 
@@ -75,7 +75,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getCart')
-    this.$on('UpdateTotal', () => {
+    this.$on('UpdateCart', () => {
       var val = 0
       var items = this.products
       _.forEach(items, function (product) {
@@ -91,20 +91,12 @@ export default {
       })
       this.total = val
     })
-  },
-  methods: {
-    updateValues: () => {
-      var val = 0
-      var items = this.products
-      _.forEach(items, function (product) {
-        val += product.product.price * product.quantity
-      })
-      this.total = val
-    }
+    this.allProducts = this.products
   },
   data () {
     return {
-      total: 0
+      total: 0,
+      allProducts: this.products
     }
   }
 }

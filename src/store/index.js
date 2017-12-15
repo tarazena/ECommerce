@@ -4,6 +4,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 import products from './modules/products'
 import cart from './modules/cart'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -15,5 +16,6 @@ export default new Vuex.Store({
   modules: {
     products, cart
   },
-  strict: debug
+  strict: debug,
+  plugins: [createPersistedState()]
 })

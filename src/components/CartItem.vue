@@ -15,8 +15,9 @@
 		</td>
 		<td data-th="Subtotal" class="text-center">${{cartItem.product.price * itemQuantity}}</td>
 		<td class="actions" data-th="">
-			<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-			<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+			<button class="btn btn-info btn-lg" @click="deleteItem(cartItem)">
+          <span class="glyphicon glyphicon-trash"></span>
+          </button>								
 		</td>
 	</tr>
 </template>
@@ -34,11 +35,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['updateQuantityInCart']),
+    ...mapActions(['updateQuantityInCart', 'removeFromCart']),
     updateCartAmmount: function (quantity) {
       var product = this.cartItem.product
       this.$store.dispatch('updateQuantityInCart', { product, quantity })
-      this.$parent.$emit('UpdateTotal')
+      this.$parent.$emit('UpdateCart')
+    },
+    deleteItem: function (cartItem) {
+      this.$store.dispatch('removeFromCart', cartItem)
+      this.$parent.$emit('UpdateCart')
     }
   },
   watch: {
