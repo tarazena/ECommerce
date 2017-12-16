@@ -41,11 +41,7 @@
                 <strong>Total ${{ total }}</strong>
               </td>
               <td>
-                <a 
-                  href="#" 
-                  class="btn btn-success btn-block">Checkout
-                  <i class="fa fa-angle-right" />
-                </a>
+                <router-link :to='"/checkout"' class="btn btn-success btn-block">Checkout</router-link>
               </td>
             </tr>
           </tfoot>
