@@ -1,26 +1,24 @@
 <template>
-  <div class="container">
-    
-
-    <div class="omb_login">
+  	<div class="container">
+    	<div class="omb_login">
     	<h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
 		<div class="row omb_row-sm-offset-3 omb_socialButtons">
     	    <div class="col-xs-4 col-sm-2">
-		        <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+		        <a href="#" class="btn omb_btn-facebook">
 			        <i class="fa fa-facebook visible-xs"></i>
-			        <span class="hidden-xs">Facebook</span>
+			        <span>Facebook</span>
 		        </a>
 	        </div>
         	<div class="col-xs-4 col-sm-2">
-		        <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+		        <a href="#" class="btn omb_btn-twitter">
 			        <i class="fa fa-twitter visible-xs"></i>
-			        <span class="hidden-xs">Twitter</span>
+			        <span>Twitter</span>
 		        </a>
 	        </div>	
         	<div class="col-xs-4 col-sm-2" data-onsuccess="onSignIn">
-		        <a href="#" class="btn btn-lg btn-block omb_btn-google">
+		        <a href="#" class="btn omb_btn-google">
 			        <i class="fa fa-google-plus visible-xs"></i>
-			        <span class="hidden-xs">Google+</span>
+			        <span>Google+</span>
 		        </a>
 	        </div>	
 		</div>
@@ -63,10 +61,7 @@
 			</div>
 		</div>	    	
 	</div>
-
-
-
-        </div>
+	</div>
 </template>
 
 <script>
@@ -78,8 +73,9 @@ export default {
 <style>
 @media (min-width: 768px) {
     .omb_row-sm-offset-3 div:first-child[class*="col-"] {
-        margin-left: 25%;
-    }
+		margin-left: 25%;
+		padding-left: 25%
+	}
 }
 
 .omb_login .omb_authTitle {
@@ -136,7 +132,8 @@ export default {
 .omb_login {
   background-color: white;
   border-radius: 5px;
-}	
+}
+	
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;

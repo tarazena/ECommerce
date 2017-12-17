@@ -15,7 +15,8 @@ const state = {
 
 // getters
 const getters = {
-  allProducts: state => state.all
+  allProducts: state => state.all,
+  getProduct: state => id => state.all.filter(item => item.id === id)
 }
 
 // actions

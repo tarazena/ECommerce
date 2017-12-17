@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding-top: 10px; padding-bottom: 10px;">
       <div class="card-block" style="background-color: white; padding: 5px">
         <div class="card">
-          <img class="card-img-top img-fluid" :src="item.image" alt="Card image cap" style="width:200px; height: 200px;">
+          <img class="card-img-top img-fluid" :src="'./static/products/'+ item.company + '/' + item.images[0] + '.jpg'" alt="Card image cap" style="width:200px; height: 200px;">
           <div class="card-block">
             <h4 class="card-title">{{item.company}} {{item.name}}</h4>
             <p class="card-text">Memory: {{item.memory}}</p>

@@ -7,6 +7,7 @@ import HomePage from '@/components/Home'
 import Cart from '@/components/Cart'
 import Checkout from '@/components/Checkout'
 import ProductDetails from '@/components/ProductDetails'
+import ContactUs from '@/components/ContactUs'
 
 Vue.use(Vuex)
 Vue.use(Router)
@@ -44,6 +45,11 @@ export default new Router({
           next(false)
         }
       }
+    },
+    {
+      path: 'contactus',
+      name: 'ContactUs',
+      component: ContactUs
     }
   ],
   mode: 'history'

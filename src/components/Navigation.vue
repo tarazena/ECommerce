@@ -48,11 +48,11 @@ export default {
           name: 'Home'
         },
         {
-          route: 'products',
+          route: '/products',
           name: 'Products'
         },
         {
-          route: '/',
+          route: '/contactus',
           name: 'Contact'
         }
       ]
