@@ -17,5 +17,5 @@ export default new Vuex.Store({
     products, cart
   },
   strict: debug,
-  plugins: [createPersistedState()]
+  plugins: [createPersistedState({ storage: window.sessionStorage })]
 })
