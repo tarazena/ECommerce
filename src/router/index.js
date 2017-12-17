@@ -53,7 +53,7 @@ export default new Router({
     },
     {
       path: '*',
-      component: HomePage
+      redirect: '/'
     }
   ],
   mode: 'history'
