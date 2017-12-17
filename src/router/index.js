@@ -50,6 +50,10 @@ export default new Router({
       path: 'contactus',
       name: 'ContactUs',
       component: ContactUs
+    },
+    {
+      path: '*',
+      component: HomePage
     }
   ],
   mode: 'history'
