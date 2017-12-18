@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import RouterStorage from 'vue-router-storage'
 import Vuex from 'vuex'
 
 import ProductsList from '@/components/ProductsList'
@@ -11,6 +12,7 @@ import ContactUs from '@/components/ContactUs'
 
 Vue.use(Vuex)
 Vue.use(Router)
+Vue.use(RouterStorage, { showLog: false, stayHere: true });
 
 export default new Router({
   routes: [
