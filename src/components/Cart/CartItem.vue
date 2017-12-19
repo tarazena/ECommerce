@@ -3,17 +3,17 @@
     <div class="row d-flex align-items-center">
       <div class="col-5">
         <div class="d-flex align-items-center">
-          <img :src="'../../../static/Products/' + item.product.company + '/' + item.product.images[0] + '.jpg'" alt="..." class="img-fluid">
+          <img :src="'../../../static/Products/' + cartItem.product.company + '/' + cartItem.product.images[0] + '.jpg'" alt="..." class="img-fluid">
           <div class="title">
             <a href="detail.html">
-              <h5>{{item.product.company}} {{item.product.name}}</h5>
-              <span class="text-muted">Memory: {{item.product.memory}}GB</span>
+              <h5>{{cartItem.product.company}} {{cartItem.product.name}}</h5>
+              <span class="text-muted">Memory: {{cartItem.product.memory}}GB</span>
             </a>
           </div>
         </div>
       </div>
       <div class="col-2">
-        <span>${{item.product.price}}</span>
+        <span>${{cartItem.product.price}}</span>
       </div>
       <div class="col-2">
         <div class="d-flex align-items-center">
@@ -25,10 +25,10 @@
         </div>
       </div>
       <div class="col-2">
-        <span>${{item.quantity * item.product.price}}</span>
+        <span>${{cartItem.quantity * cartItem.product.price}}</span>
       </div>
-      <div class="col-1 text-center" @click="deleteItem(item)">
-        <i class="delete fa fa-trash"></i>
+      <div class="col-1 text-center">
+        <i class="delete fa fa-trash" @click="deleteItem(cartItem)" :id="cartItem.product.company + '_' + cartItem.product.name + '_' + cartItem.product.id"></i>
       </div>
     </div>
   </div>
@@ -42,8 +42,7 @@ export default {
   props: ['cartItem'],
   data () {
     return {
-      itemQuantity: this.cartItem.quantity,
-      item: this.cartItem
+      itemQuantity: this.cartItem.quantity
     }
   },
   methods: {
@@ -54,7 +53,6 @@ export default {
     },
     deleteItem: function (cartItem) {
       this.$store.dispatch('removeFromCart', cartItem)
-      this.$parent.$emit('UpdateCart')
     }
   },
   watch: {

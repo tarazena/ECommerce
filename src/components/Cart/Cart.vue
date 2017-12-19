@@ -29,7 +29,6 @@ import { mapGetters } from 'vuex'
 import CartItem from './CartItem'
 import CartHero from './CartHero'
 import OrderDetails from './OrdersDetail'
-import * as _ from 'lodash'
 
 export default {
   name: 'Cart',
@@ -43,32 +42,6 @@ export default {
     'cart-item': CartItem,
     'cart-hero': CartHero,
     'order-details': OrderDetails
-  },
-  created () {
-    // this.$store.dispatch('getCart')
-    this.$on('UpdateCart', () => {
-      var val = 0
-      var items = this.products
-      _.forEach(items, function (product) {
-        val += product.product.price * product.quantity
-      })
-      this.total = val
-    })
-    // this.$nextTick(function () {
-    //   var val = 0
-    //   var items = this.products
-    //   _.forEach(items, function (product) {
-    //     val += product.product.price * product.quantity
-    //   })
-    //   this.total = val
-    // })
-    // this.allProducts = this.products
-  },
-  data () {
-    return {
-      // total: 0,
-      // allProducts: this.products
-    }
   }
 }
 </script>
