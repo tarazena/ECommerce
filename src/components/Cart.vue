@@ -1,53 +1,26 @@
 <template>
-  <div>
+  <div class="container-fluid" style="padding-top: 10px;">
     <div v-if="products.length > 0">
-      <div 
-        class="container" 
-        style="background-color: white;">
-        <table 
-          id="cart" 
-          class="table table-hover table-condensed">
-          <thead>
-            <tr>
-              <th style="width:50%">Product</th>
-              <th style="width:10%">Price</th>
-              <th style="width:8%">Quantity</th>
-              <th 
-                style="width:22%" 
-                class="text-center">Subtotal</th>
-              <th style="width:10%" />
-            </tr>
-          </thead>
-          <tbody>
-            <cart-item 
-              v-for="(item, index) in allProducts" 
-              :key="index" 
-              :cartItem="item"/>
-          </tbody>
-          <tfoot>
-            <tr class="visible-xs">
-              <td class="text-center">
-                <strong>Total ${{ total }}</strong>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <router-link  class="btn btn-warning nav-link" :to='"/products"'>Continue Shopping</router-link>
-              </td>
-              <td 
-                colspan="2" 
-                class="hidden-xs" />
-              <td class="hidden-xs text-center">
-                <strong>Total ${{ total }}</strong>
-              </td>
-              <td>
-                <router-link :to='"/checkout"' class="btn btn-success btn-block">Checkout</router-link>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+  <div class="row">
+      <div class="col-sm-4">Product</div>
+      <div class="col-sm-4">Price</div>
+      <div class="col-sm-4">Quantity</div>
+      <div class="col-sm-4">Subtotal</div>
+      <div class="col-sm-4"></div>
+  </div>
+    <cart-item v-for="(item, index) in allProducts" :key="index" :cartItem="item"/>
+  <div class="row">
+    <div class="col-sm-4">
+        <router-link class="btn btn-warning nav-link" :to='"/products"'>Continue Shopping</router-link>      
     </div>
+    <div class="col-sm-4">
+        <strong>Total ${{ total }}</strong>
+    </div>
+    <div class="col-sm-4">    
+        <router-link :to='"/checkout"' class="btn btn-success btn-block">Checkout</router-link>
+    </div>
+      </div>
+     </div>
     <div v-else>
       <h1>Your Cart is Empty</h1>
     </div>

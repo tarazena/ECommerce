@@ -1,6 +1,8 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-top: 10px;">
+      <div class="row">
         <productItem v-for="(item, index) in products" :item="item" :key="index" />
+      </div>
     </div>
 </template>
 

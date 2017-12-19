@@ -1,28 +1,22 @@
 <template>
-<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color: yellow">
-    <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button"  class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="border-color:#337ab7;" id="navMenu">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar" style="background-color: #337ab7;"></span>
-              <span class="icon-bar" style="background-color: #337ab7;"></span>
-              <span class="icon-bar" style="background-color: #337ab7;"></span>
-            </button>
-            <a class="navbar-brand" href="#" id="navBar">MyEcommerce</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-            <ul class="nav navbar-nav navbar-right">
-              <li v-for="(route, index) in routes" :key="index" class="nav-item" @click="toggleMenu()">
-            <router-link class="nav-link" :to="route.route" style="padding: 15px">{{route.name}}</router-link>
-          </li>
-          <li class="nav-item" @click="toggleMenu()">
-            <router-link class="nav-link" :to="'/cart'" style="padding: 15px">Cart<span class="badge badge-danger badge-notify" v-if="products.length > 0">{{products.length}}</span></router-link>
-          </li>
-          </ul>
-          </div><!--/.nav-collapse -->
-          
-        </div>
-</nav>
+<nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">MyEcommerce</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav ml-auto ml-2 mt-lg-0">
+      <li v-for="(route, index) in routes" :key="index" class="nav-item" @click="toggleMenu()">
+        <router-link class="nav-link" :to="route.route" style="padding: 15px">{{route.name}}</router-link>
+      </li>
+      <li class="nav-item" @click="toggleMenu()">
+        <router-link class="nav-link" :to="'/cart'" style="padding: 15px">Cart
+          <span class="badge badge-danger badge-notify" v-if="products.length > 0">{{products.length}}</span>
+        </router-link>
+      </li>
+    </ul>
+  </div>
+  </nav>
 </template>
 <script>
 import { mapGetters } from 'vuex'
