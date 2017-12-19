@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 
 import ProductsList from '@/components/ProductsList'
 import HomePage from '@/components/Home'
-import Cart from '@/components/Cart'
+import Cart from '@/components/Cart/Cart'
 import Checkout from '@/components/Checkout'
 import ProductDetails from '@/components/ProductDetails'
 import ContactUs from '@/components/ContactUs'

@@ -2,11 +2,13 @@
   <div id="app">
     <navbar />
     <router-view/>
+    <site-footer />
   </div>
 </template>
 
 <script>
-import Navigation from './components/Navigation'
+import Navigation from './components/Main Components/Navigation'
+import Footer from './components/Main Components/Footer'
 
 export default {
   name: 'app',
@@ -15,19 +17,12 @@ export default {
       hoverOver: false
     }
   },
-  components: { 'navbar': Navigation }
+  components: {
+    'navbar': Navigation,
+    'site-footer': Footer
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: white;
-  margin-top: 60px;
-  width: 100%;
-  margin-left: 1px;
-}
 </style>

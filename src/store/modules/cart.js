@@ -9,7 +9,14 @@ const state = {
 }
 
 const getters = {
-  getCart: state => state.added
+  getCart: state => state.added,
+  getTotal: state => {
+    var val = 0
+    _.forEach(state.added, function (product) {
+      val += product.product.price * product.quantity
+    })
+    return val
+  }
 }
 
 // mutations
@@ -41,7 +48,7 @@ const mutations = {
     })).quantity = payload.quantity
   },
   [types.REMOVE_PRODUCT_FROM_CART] (state, payload) {
-    var elementPos = state.added.map(function (x) { return x.product.id }).indexOf(payload.product.id)
+    var elementPos = state.added.findIndex(x => x.product.id === payload.product.id)
     state.added.splice(elementPos, 1)
   }
 }
