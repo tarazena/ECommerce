@@ -68,7 +68,7 @@ export default {
       var model = this
       $.ajax({
         type: 'POST',
-        url: 'http://localhost/EcommerceAPIs/v1/contact',
+        url: 'http://api-ecommerce.azurewebsites.net/v1/contact',
         data: {firstName: model.firstName, lastName: model.lastName, email: model.email, message: model.message},
         success: function (resp, textStatus, request) {
           console.log(request)
