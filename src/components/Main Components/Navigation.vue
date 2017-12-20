@@ -86,6 +86,10 @@ export default {
         {
           route: '/contactus',
           name: 'Contact'
+        },
+        {
+          route: '/blog',
+          name: 'Blog'
         }
       ]
     }

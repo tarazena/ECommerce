@@ -11,13 +11,15 @@ if (process.env.NODE_ENV === 'development') {
 
 // initial state
 const state = {
-  all: []
+  all: [],
+  modal: null
 }
 
 // getters
 const getters = {
   allProducts: state => state.all,
-  getProduct: state => id => state.all.filter(item => item.id === id)
+  getProduct: state => id => state.all.filter(item => item.id === id),
+  getModal: state => state.modal
 }
 
 // actions
@@ -26,6 +28,9 @@ const actions = {
     $.getJSON(url).done(products => {
       commit(types.RECEIVE_PRODUCTS, { products })
     })
+  },
+  setModal ({ commit }, payload) {
+    commit(types.SET_MODAL, payload)
   }
 }
 
@@ -33,6 +38,9 @@ const actions = {
 const mutations = {
   [types.RECEIVE_PRODUCTS] (state, { products }) {
     state.all = products
+  },
+  [types.SET_MODAL] (state, item) {
+    state.modal = item
   }
 }
 
