@@ -45,8 +45,8 @@
               </select> -->
             </div>
             <ul class="CTAs list-inline">
-              <li class="list-inline-item"><a href="#" class="btn btn-template wide"> <i class="icon-cart"></i>Add to Cart</a></li>
-              <li class="list-inline-item"><a href="#" class="btn btn-template-outlined wide"> <i class="fa fa-heart-o"></i>Add to wishlist</a></li>
+              <li class="list-inline-item"><button class="btn btn-template wide" @click="addToCart({product, quantity})"> <i class="icon-cart"></i>Add to Cart</button></li>
+              <li class="list-inline-item"><button class="btn btn-template-outlined wide"> <i class="fa fa-heart-o"></i>Add to wishlist</button></li>
             </ul>
           </div>
         </div>
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Product-Details-Section',
   props: ['product'],
@@ -68,32 +70,11 @@ export default {
       var owl = $('#owl-carousel')
       owl.owlCarousel({
         loop: true,
-        margin: 0,
-        smartSpeed: 500,
-        responsiveClass: true,
-        autoplay: true,
-        autoplayHoverPause: true,
-        navText: [
-          '<i class="fa fa-angle-left"></i>',
-          '<i class="fa fa-angle-right"></i>'
-        ],
-        responsive: {
-          0: {
-            items: 1,
-            nav: false,
-            dots: true
-          },
-          600: {
-            items: 1,
-            nav: false,
-            dots: true
-          },
-          1120: {
-            items: 1,
-            dots: false,
-            nav: true
-          }
-        },
+        items: 1,
+        thumbs: true,
+        thumbsPrerendered: true,
+        dots: false,
+        responsiveClass: false,
         onRefresh: function () {
           owl.find('.item').height('')
         },
@@ -110,6 +91,9 @@ export default {
         }
       })
     })
+  },
+  methods: {
+    ...mapActions(['addToCart', 'updateQuantityInCart'])
   }
 }
 </script>

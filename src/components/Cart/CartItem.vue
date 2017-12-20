@@ -18,9 +18,9 @@
       <div class="col-2">
         <div class="d-flex align-items-center">
           <div class="quantity d-flex align-items-center">
-            <div class="dec-btn" @click="itemQuantity--">-</div>
-            <input type="text" class="quantity-no" v-model="itemQuantity">
-            <div class="inc-btn" @click="itemQuantity++">+</div>
+            <div class="dec-btn" @click="quantity > 1 ? quantity-- : quantity">-</div>
+            <input type="text" class="quantity-no" v-model="quantity">
+            <div class="inc-btn" @click="quantity++">+</div>
           </div>
         </div>
       </div>
@@ -42,23 +42,21 @@ export default {
   props: ['cartItem'],
   data () {
     return {
-      itemQuantity: this.cartItem.quantity
+      quantity: this.cartItem.quantity
     }
   },
   methods: {
     ...mapActions(['updateQuantityInCart', 'removeFromCart']),
-    updateCartAmmount: function (quantity) {
-      var product = this.cartItem.product
-      this.$store.dispatch('updateQuantityInCart', { product, quantity })
-    },
     deleteItem: function (cartItem) {
       this.$store.dispatch('removeFromCart', cartItem)
     }
   },
   watch: {
-    itemQuantity: function (val) {
-      this.updateCartAmmount(val)
+    quantity: function (quantity) {
+      var product = this.cartItem.product
+      this.updateQuantityInCart({product, quantity})
     }
+
   }
 }
 </script>

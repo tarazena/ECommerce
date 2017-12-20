@@ -84,7 +84,7 @@ export default {
           name: 'Products'
         },
         {
-          route: '/contactus',
+          route: '/contact',
           name: 'Contact'
         },
         {

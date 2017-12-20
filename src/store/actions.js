@@ -1,9 +1,9 @@
 import * as types from './mutation-types'
 
-export const addToCart = ({ commit }, product) => {
+export const addToCart = ({ commit }, {product, quantity}) => {
   commit(types.ADD_PRODUCT_TO_CART, {
     product: product,
-    quantity: 1
+    quantity: quantity
   })
 }
 

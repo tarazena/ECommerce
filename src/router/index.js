@@ -7,7 +7,7 @@ import HomePage from '@/components/Home'
 import Cart from '@/components/Cart/Cart'
 import Checkout from '@/components/Checkout'
 import ProductDetails from '@/components/Products/ProductDetails'
-import ContactUs from '@/components/ContactUs'
+import ContactUs from '@/components/Contact/ContactUs'
 import Blog from '@/components/Blog/Blog'
 
 Vue.use(Vuex)
@@ -53,7 +53,7 @@ export default new Router({
       }
     },
     {
-      path: 'contactus',
+      path: '/contact',
       name: 'ContactUs',
       component: ContactUs
     },

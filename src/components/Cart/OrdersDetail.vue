@@ -55,14 +55,10 @@
 export default {
   name: 'orders-detail',
   props: ['orderTotal'],
-  data () {
-    return {
-      tax: this.orderTotal * 0.08,
-      shippingAndHandling: this.orderTotal * 0.01
-    }
-  },
   computed: {
-    total: function () { return (this.tax + this.shippingAndHandling + this.orderTotal) }
+    total: function () { return (this.tax + this.shippingAndHandling + this.orderTotal) },
+    tax: function () { return this.orderTotal * 0.08 },
+    shippingAndHandling: function () { return this.orderTotal * 0.01 }
   }
 }
 </script>

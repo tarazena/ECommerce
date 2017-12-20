@@ -6,7 +6,7 @@
         <img :src="'./static/products/'+ item.company + '/' + item.images[0] + '.jpg'" :alt="item.company + ' ' + item.name" class="img-fluid">
         <div class="hover-overlay d-flex align-items-center justify-content-center">
           <div class="CTA d-flex align-items-center justify-content-center">
-            <a class="add-to-cart" @click="addToCart(item)">
+            <a class="add-to-cart" @click="addToCart({product: item, quantity: 1})">
               <i class="fa fa-shopping-cart"></i>
               </a>
               <router-link :to="'/product-details/' + item.id" class="visit-product active">

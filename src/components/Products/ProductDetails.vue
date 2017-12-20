@@ -1,9 +1,9 @@
 <template>
 		<div>
-			<product-detail-hero :product="product"/>
-			<product-details-section :product="product"/>
-			<product-description :product="product"/>
-			<related-product/>
+			<ProductDetailHero :product="product"/>
+			<ProductDetailsSection :product="product"/>
+			<ProductDescription :product="product"/>
+			<RelatedProduct />
 		</div>
 </template>
 
@@ -12,15 +12,15 @@ import ProductDetailHero from './ProductDetailHero'
 import ProductDetailsSection from './ProductDetailsSection'
 import ProductDescription from './ProductDescription'
 import RelatedProduct from './RelatedProducts'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'product-Details',
   components: {
-    'product-detail-hero': ProductDetailHero,
-		'product-details-section': ProductDetailsSection,
-		'product-description': ProductDescription,
-		'related-product': RelatedProduct
+    ProductDetailHero,
+    ProductDetailsSection,
+    ProductDescription,
+    RelatedProduct
   },
   computed: {
     ...mapGetters(['getProduct'])
@@ -33,9 +33,6 @@ export default {
       product: {},
       added: false
     }
-  },
-  methods: {
-    ...mapActions(['addToCart'])
   }
 }
 </script>

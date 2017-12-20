@@ -13,7 +13,9 @@ const getters = {
   getTotal: state => {
     var val = 0
     _.forEach(state.added, function (product) {
-      val += product.product.price * product.quantity
+      if (product.product !== undefined) {
+        val += product.product.price * product.quantity
+      }
     })
     return val
   }
@@ -21,7 +23,7 @@ const getters = {
 
 // mutations
 const mutations = {
-  [types.ADD_PRODUCT_TO_CART] (state, { product }) {
+  [types.ADD_PRODUCT_TO_CART] (state, { product, quantity }) {
     var obj = _.filter(state.added, (o) => {
       if (o.product.id === product.id) {
         return o
@@ -29,11 +31,11 @@ const mutations = {
     })
     if (obj.length > 0) {
       _.forEach(obj, (prod) => {
-        prod.quantity++
+        prod.quantity += quantity
       })
     } else {
       state.added.push({
-        product, quantity: 1
+        product, quantity: quantity
       })
     }
   },

@@ -12,7 +12,7 @@
                   <li><strong>24</strong> pages, <strong>6</strong> colour variants</li>
                   <li><strong>SCSS</strong> sources </li>
                   <li>frequent & <strong>free updates</strong></li>
-                </ul><a href="#" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag"> </i></a>
+                </ul><router-link :to="'/products'" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag"> </i></router-link>
               </div>
             </div>
           </div>
@@ -22,7 +22,7 @@
             <div class="row">
               <div class="col-lg-6 text-white">
                 <h1>Labore et dolore magna aliqua</h1>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag">  </i></a>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><router-link :to="'/products'" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag">  </i></router-link>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <div class="row">
               <div class="col-lg-6 text-white">
                 <h1>Sed do eiusmod tempor</h1>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag">           </i></a>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><router-link :to="'/products'" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag"></i></router-link>
               </div>
             </div>
           </div>

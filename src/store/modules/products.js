@@ -19,7 +19,12 @@ const state = {
 const getters = {
   allProducts: state => state.all,
   getProduct: state => id => state.all.filter(item => item.id === id),
-  getModal: state => state.modal
+  getModal: state => {
+    if (state.modal === null) {
+      state.modal = state.all[0]
+    }
+    return state.modal
+  }
 }
 
 // actions

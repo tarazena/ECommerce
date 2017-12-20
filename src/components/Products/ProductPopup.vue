@@ -16,14 +16,14 @@
                 <p>Memory: {{item.memory}}GB</p>
                 <div class="d-flex align-items-center">
                   <div class="quantity d-flex align-items-center">
-                    <div class="dec-btn">-</div>
-                    <input type="text" value="1" class="quantity-no">
-                    <div class="inc-btn">+</div>
+                    <div class="dec-btn" @click="quantity > 1 ? quantity-- : quantity">-</div>
+                    <input type="text" value="1" class="quantity-no" v-model="quantity">
+                    <div class="inc-btn" @click="quantity++">+</div>
                   </div>
                 </div>
                 <ul class="CTAs list-inline">
-                  <li class="list-inline-item"><a href="#" class="btn btn-template wide"> <i class="fa fa-shopping-cart"></i>Add to Cart</a></li>
-                  <li class="list-inline-item"><a href="#" class="visit-product active btn btn-template-outlined wide"> <i class="icon-heart"></i>Add to wishlist</a></li>
+                  <li class="list-inline-item"><button class="btn btn-template wide"  @click="addToCart({product: item, quantity})"> <i class="fa fa-shopping-cart"></i>Add to Cart</button></li>
+                  <li class="list-inline-item"><button class="visit-product active btn btn-template-outlined wide"> <i class="icon-heart"></i>Add to wishlist</button></li>
                 </ul>
               </div>
             </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Product-Popup',
@@ -42,6 +42,14 @@ export default {
     ...mapGetters({
       item: 'getModal'
     })
+  },
+  methods: {
+    ...mapActions(['addToCart'])
+  },
+  data () {
+    return {
+      quantity: 1
+    }
   }
 }
 </script>
