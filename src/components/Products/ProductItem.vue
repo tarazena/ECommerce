@@ -12,9 +12,10 @@
               <router-link :to="'/product-details/' + item.id" class="visit-product active">
               <i class="icon-search"></i>View
               </router-link>
-              <a href="#" data-toggle="modal" data-target="#exampleModal" class="quick-view" @click="viewItemModal(item)">
+              <a href="#"  @click.prevent="viewItemModal(item, item.id)" class="quick-view">
                 <i class="fa fa-arrows-alt"></i>
                 </a>
+                <a style='display: none' data-toggle="modal" data-target="#exampleModal" :id="item.id"></a>
                 </div>
         </div>
       </div>
@@ -37,8 +38,9 @@ export default {
   },
   methods: {
     ...mapActions(['addToCart']),
-    viewItemModal: function (item) {
+    viewItemModal: function (item, id) {
       this.$store.dispatch('setModal', item)
+      $('#' + id).click()
     }
   }
 }

@@ -5,10 +5,16 @@ import Vuex from 'vuex'
 import ProductsList from '@/components/Products/ProductsList'
 import HomePage from '@/components/Home'
 import Cart from '@/components/Cart/Cart'
-import Checkout from '@/components/Checkout'
+import Checkout from '@/components/Checkout/Checkout'
 import ProductDetails from '@/components/Products/ProductDetails'
+import Login from '@/components/Account/Login/Login'
 import ContactUs from '@/components/Contact/ContactUs'
 import Blog from '@/components/Blog/Blog'
+import CustomerHub from '@/components/Account/User Account/Customer-Hub'
+import CustomerOrders from '@/components/Account/User Account/Customer-Orders'
+import CustomerProfile from '@/components/Account/User Account/Customer-Profile'
+import CustomerAddresses from '@/components/Account/User Account/Customer-Addresses'
+import CustomerOrderDetail from '@/components/Account/User Account/Customer-Order-Detail'
 
 Vue.use(Vuex)
 Vue.use(Router)
@@ -39,6 +45,38 @@ export default new Router({
       path: '/product-details/:id',
       name: 'ProductDetails',
       component: ProductDetails
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/account',
+      name: 'Account',
+      component: CustomerHub,
+      children: [
+        {
+          path: 'orders',
+          component: CustomerOrders
+        },
+        {
+          path: 'profile',
+          component: CustomerProfile
+        },
+        {
+          path: 'address',
+          component: CustomerAddresses
+        },
+        {
+          path: '/order/:id',
+          component: CustomerOrderDetail
+        },
+        {
+          path: '',
+          component: CustomerOrders
+        }
+      ]
     },
     {
       path: '/checkout',

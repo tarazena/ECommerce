@@ -1,0 +1,71 @@
+<template>
+  <div class="col-lg-8 col-xl-9 pl-lg-3">
+    <table class="table table-hover table-responsive-md">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th># 1735</th>
+          <td>22/6/2017</td>
+          <td>$150.00</td>
+          <td>
+            <span class="badge badge-info">Being prepared</span>
+          </td>
+          <td>
+            <router-link :to="'/order/1'" class="btn btn-primary btn-sm">View</router-link>
+          </td>
+        </tr>
+        <tr>
+          <th># 1734</th>
+          <td>7/5/2017</td>
+          <td>$150.00</td>
+          <td>
+            <span class="badge badge-warning">Action needed</span>
+          </td>
+          <td>
+            <router-link :to="'/order/1'" class="btn btn-primary btn-sm">View</router-link>
+          </td>
+        </tr>
+        <tr>
+          <th># 1730</th>
+          <td>30/9/2016</td>
+          <td>$150.00</td>
+          <td>
+            <span class="badge badge-success">Received</span>
+          </td>
+          <td>
+            <router-link :to="'/order/1'"  class="btn btn-primary btn-sm">View</router-link>
+          </td>
+        </tr>
+        <tr>
+          <th># 1705</th>
+          <td>22/6/2016</td>
+          <td>$150.00</td>
+          <td>
+            <span class="badge badge-danger">Cancelled</span>
+          </td>
+          <td>
+            <router-link :to="'/order/1'"  class="btn btn-primary btn-sm">View</router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Customer-Orders'
+}
+</script>
+
+<style>
+
+</style>

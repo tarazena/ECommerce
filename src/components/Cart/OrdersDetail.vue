@@ -45,7 +45,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 text-center CTAs"><a href="checkout1.html" class="btn btn-template btn-lg wide">Proceed to checkout<i class="fa fa-long-arrow-right"></i></a></div>
+          <div class="col-lg-12 text-center CTAs"><router-link :to="'/checkout'" class="btn btn-template btn-lg wide">Proceed to checkout<i class="fa fa-long-arrow-right"></i></router-link></div>
         </div>
       </div>
     </section>

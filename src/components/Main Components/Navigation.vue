@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="container-fluid">  
-          <!-- Navbar Header  --><a href="index.html" class="navbar-brand"><img src="static/Assets/img/logo.png" alt="..."></a>
+          <!-- Navbar Header  --><router-link :to="'/'" class="navbar-brand"><img src="static/Assets/img/logo.png" alt="..."></router-link>
           <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
           <!-- Navbar Collapse -->
           <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -26,7 +26,7 @@
               <!-- Search Button-->
               <div class="search"><i class="icon-search"></i></div>
               <!-- User Not Logged - link to login page-->
-              <div class="user"> <a id="userdetails" href="customer-login.html" class="user-link"><i class="icon-profile">                   </i></a></div>
+              <div class="user"> <router-link id="userdetails" :to="'/login'" class="user-link"><i class="icon-profile"></i></router-link></div>
               <!-- Cart Dropdown-->
               <div class="cart dropdown show"><a id="cartdetails" href="https://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="icon-cart"></i>
                   <div class="cart-no" v-if="products.length > 0">{{products.length}}</div></a><router-link :to="'/cart'" class="text-primary view-cart">View Cart</router-link>

@@ -1,4 +1,5 @@
 <template>
+<div v-if="item !== null">
   <div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
       <div role="document" class="modal-dialog">
         <div class="modal-content">
@@ -29,6 +30,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 </template>
