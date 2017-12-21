@@ -36,7 +36,7 @@
                     <div class="d-flex align-items-center">
                       <div class="img"><img :src="'../../../static/Products/' + item.product.company + '/' + item.product.images[0] + '.jpg'" :alt='item.product.company + " " +  item.product.name' class="img-fluid"></div>
                       <div class="details d-flex justify-content-between">
-                        <div class="text"> <a href="#"><strong>{{item.product.company}} {{item.product.name}}</strong></a><small>Quantity: {{item.quantity}}</small><span class="price">${{item.product.price}} </span></div><a class="delete" @click="deleteItem(item)"><i class="fa fa-trash-o"></i></a>
+                        <div class="text"> <router-link :to="'/product-details/' + item.product.id" ><strong>{{item.product.company}} {{item.product.name}}</strong></router-link><small>Quantity: {{item.quantity}}</small><span class="price">${{item.product.price}} </span></div><a class="delete" @click="deleteItem(item)"><i class="fa fa-trash-o"></i></a>
                       </div>
                     </div>
                   </div>
@@ -69,7 +69,6 @@ export default {
   methods: {
     deleteItem: function (cartItem) {
       this.$store.dispatch('removeFromCart', cartItem)
-      // this.$parent.$emit('UpdateCart')
     }
   },
   data () {
