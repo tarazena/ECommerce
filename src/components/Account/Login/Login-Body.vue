@@ -11,17 +11,17 @@
                 <p class="lead">Already our customer?</p>
                 <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
                 <hr>
-                <form action="customer-orders.html" method="post">
+                <form method="post" v-on:submit.prevent>
                   <div class="form-group">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" type="text" class="form-control">
+                    <input id="email" type="text" class="form-control" v-model="email">
                   </div>
                   <div class="form-group">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" class="form-control">
+                    <input id="password" type="password" class="form-control" v-model="password">
                   </div>
                   <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary" @click.prevent="goToAccount()"><i class="fa fa-sign-in"></i>Log in</button>
+                    <button type="submit" class="btn btn-primary" @click.prevent="Login()"><i class="fa fa-sign-in"></i>Log in</button>
                   </div>
                 </form>
               </div>
@@ -68,8 +68,31 @@ import router from '../../../router/index'
 export default {
   name: 'Login-Body',
   methods: {
-    goToAccount: () => {
-      router.push('/account/orders')
+    Login () {
+      var model = this
+      $.ajax({
+        type: 'POST',
+        url: 'http://api-ecommerce.azurewebsites.net/v1/login',
+        data: {userID: model.email, password: model.password},
+        success: function (resp, textStatus, request) {
+          if (request.status === 202) {
+            model.$store.dispatch('setToken', resp.token)
+            model.$store.dispatch('getAccount')
+            router.push('/account/orders')
+          } else {
+            console.log('Unauthorized')
+          }
+        },
+        error: function () {
+          console.log('error in contact')
+        }
+      })
+    }
+  },
+  data () {
+    return {
+      email: '',
+      password: ''
     }
   }
 }

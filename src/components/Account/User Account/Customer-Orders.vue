@@ -11,48 +11,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th># 1735</th>
-          <td>22/6/2017</td>
-          <td>$150.00</td>
+        <tr v-for="(order, index) in account.orders" :key="index">
+          <th># {{order.id}}</th>
+          <td>{{order.date}}</td>
+          <td>{{order.total}}</td>
           <td>
-            <span class="badge badge-info">Being prepared</span>
+            <span class="badge" 
+            :class="{'badge-success': order.status === 'Delivered', 
+                      'badge-danger': order.status === 'Cancelled',
+                      'badge-warning': order.status === 'Action Needed'
+                      }">{{order.status}}</span>
           </td>
           <td>
-            <router-link :to="'/order/1'" class="btn btn-primary btn-sm">View</router-link>
-          </td>
-        </tr>
-        <tr>
-          <th># 1734</th>
-          <td>7/5/2017</td>
-          <td>$150.00</td>
-          <td>
-            <span class="badge badge-warning">Action needed</span>
-          </td>
-          <td>
-            <router-link :to="'/order/1'" class="btn btn-primary btn-sm">View</router-link>
-          </td>
-        </tr>
-        <tr>
-          <th># 1730</th>
-          <td>30/9/2016</td>
-          <td>$150.00</td>
-          <td>
-            <span class="badge badge-success">Received</span>
-          </td>
-          <td>
-            <router-link :to="'/order/1'"  class="btn btn-primary btn-sm">View</router-link>
-          </td>
-        </tr>
-        <tr>
-          <th># 1705</th>
-          <td>22/6/2016</td>
-          <td>$150.00</td>
-          <td>
-            <span class="badge badge-danger">Cancelled</span>
-          </td>
-          <td>
-            <router-link :to="'/order/1'"  class="btn btn-primary btn-sm">View</router-link>
+            <router-link :to="'/order/' + order.id" class="btn btn-primary btn-sm">View</router-link>
           </td>
         </tr>
       </tbody>
@@ -61,8 +32,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'Customer-Orders'
+  name: 'Customer-Orders',
+  computed: mapGetters({
+    account: 'getAccount'
+  })
 }
 </script>
 

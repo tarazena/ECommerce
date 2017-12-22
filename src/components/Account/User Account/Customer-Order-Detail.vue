@@ -12,48 +12,25 @@
         </div>
         <div class="basket-body">
           <!-- Product-->
-          <div class="item">
+          <div class="item" v-for="(product, index) in order.items" :key="index">
             <div class="row d-flex align-items-center">
               <div class="col-6">
                 <div class="d-flex align-items-center">
-                  <img src="img/shirt.png" alt="..." class="img-fluid">
+                  <img :src="'../static/products/'+ product.company + '/' + product.image + '.jpg'" :alt="product.company + ' ' + product.name" class="img-fluid">
                   <div class="title">
                     <a href="detail.html">
-                      <h6>Lose Oversised Shirt</h6>
-                      <span class="text-muted">Size: Large</span>
+                      <h6>{{product.company}} {{product.name}}</h6>
+                      <span class="text-muted">{{product.description}}</span>
                     </a>
                   </div>
                 </div>
               </div>
               <div class="col-2">
-                <span>$65.00</span>
+                <span>${{product.price}}</span>
               </div>
-              <div class="col-2">4</div>
+              <div class="col-2">{{product.quantity}}</div>
               <div class="col-2 text-right">
-                <span>$325.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="item">
-            <div class="row d-flex align-items-center">
-              <div class="col-6">
-                <div class="d-flex align-items-center">
-                  <img src="img/shirt-black.png" alt="..." class="img-fluid">
-                  <div class="title">
-                    <a href="detail.html">
-                      <h6>Lose Oversised Shirt</h6>
-                      <span class="text-muted">Size: Medium</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2">
-                <span>$55.00</span>
-              </div>
-              <div class="col-2">3</div>
-              <div class="col-2 text-right">
-                <span>$165.00</span>
+                <span>${{product.price * product.quantity}}</span>
               </div>
             </div>
           </div>
@@ -65,7 +42,7 @@
                 <strong>Order subtotal</strong>
               </div>
               <div class="col-2 text-right">
-                <strong>$446.00</strong>
+                <strong>${{order.total - order.shipping - order.tax}}</strong>
               </div>
             </div>
           </div>
@@ -75,7 +52,7 @@
                 <strong>Shipping and handling</strong>
               </div>
               <div class="col-2 text-right">
-                <strong>$10.00</strong>
+                <strong>${{order.shipping}}</strong>
               </div>
             </div>
           </div>
@@ -85,7 +62,7 @@
                 <strong>Tax</strong>
               </div>
               <div class="col-2 text-right">
-                <strong>$0.00</strong>
+                <strong>${{order.tax}}</strong>
               </div>
             </div>
           </div>
@@ -95,7 +72,7 @@
                 <strong>Total</strong>
               </div>
               <div class="col-2 text-right">
-                <strong>$456.00</strong>
+                <strong>${{order.total}}</strong>
               </div>
             </div>
           </div>
@@ -108,12 +85,13 @@
           <h6 class="text-uppercase">Invoice address</h6>
         </div>
         <div class="block-body">
-          <p>John Brown
-            <br> 13/25 New Avenue
-            <br> New Heaven
-            <br> 45Y 73J
-            <br> England
-            <br> Great Britain</p>
+          <p>{{order.invoiceAddress.name}}
+            <br> {{order.invoiceAddress.address1}}
+            <br v-if="order.invoiceAddress.address2 !== ''"> {{order.invoiceAddress.address2}}
+            <br> {{order.invoiceAddress.city}}
+            <br> {{order.invoiceAddress.zip}}
+            <br> {{order.invoiceAddress.state}}
+            <br> {{order.invoiceAddress.country}}</p>
         </div>
       </div>
       <div class="col-sm-6">
@@ -121,12 +99,13 @@
           <h6 class="text-uppercase">Shipping address</h6>
         </div>
         <div class="block-body">
-          <p>John Brown
-            <br> 13/25 New Avenue
-            <br> New Heaven
-            <br> 45Y 73J
-            <br> England
-            <br> Great Britain</p>
+          <p>{{order.shippingAddress.name}}
+            <br> {{order.shippingAddress.address1}}
+            <br v-if="order.shippingAddress.address2 !== ''"> {{order.shippingAddress.address2}}
+            <br> {{order.shippingAddress.city}}
+            <br> {{order.shippingAddress.zip}}
+            <br> {{order.shippingAddress.state}}
+            <br> {{order.shippingAddress.country}}</p>
         </div>
       </div>
     </div>
@@ -135,8 +114,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'Order-Details'
+  name: 'Order-Details',
+  computed: {
+    ...mapGetters(['getOrder'])
+  },
+  created () {
+    this.order = this.getOrder(this.$route.params.id)[0]
+  },
+  data () {
+    return {
+      order: {}
+    }
+  }
 }
 </script>
 
