@@ -1,4 +1,5 @@
 import * as types from '../mutation-types'
+require('../../../static/account.json')
 
 // initial state
 // shape: [{ id, quantity }]
