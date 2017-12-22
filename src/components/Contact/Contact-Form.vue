@@ -30,7 +30,10 @@
                     <label for="message" class="form-label">Your message for us *</label>
                     <textarea rows="4" name="message" id="message" placeholder="Enter your message" required="required" class="form-control" v-model="message"></textarea>
                   </div>
-                  <button type="submit" class="btn btn-template" @click="submitForm()" >Send message</button>
+                  <div class="form-group">
+                    <label class="form-label red" v-if="error">All fields above are required!</label>
+                  </div>
+                  <button type="submit" class="btn btn-template" @click.prevent="submitForm()" >Send message</button>
                 </div>
               </form>
               <div v-else>
@@ -64,34 +67,55 @@ export default {
       lastName: '',
       email: '',
       message: '',
-      sent: false
+      sent: false,
+      error: false
+    }
+  },
+  watch: {
+    firstName: function () {
+      this.error = false
+    },
+    lastName: function () {
+      this.error = false
+    },
+    email: function () {
+      this.error = false
+    },
+    message: function () {
+      this.error = false
     }
   },
   methods: {
     submitForm: function () {
       var model = this
-      $.ajax({
-        type: 'POST',
-        url: 'http://api-ecommerce.azurewebsites.net/v1/contact',
-        data: {firstName: model.firstName, lastName: model.lastName, email: model.email, message: model.message},
-        success: function (resp, textStatus, request) {
-          if (request.status === 200) {
-            model.firstName = ''
-            model.lastName = ''
-            model.email = ''
-            model.message = ''
-            model.sent = true
+      if (model.firstName !== '' && model.lastName !== '' && model.email !== '' && model.message !== '') {
+        $.ajax({
+          type: 'POST',
+          url: 'http://api-ecommerce.azurewebsites.net/v1/contact',
+          data: {firstName: model.firstName, lastName: model.lastName, email: model.email, message: model.message},
+          success: function (resp, textStatus, request) {
+            if (request.status === 200) {
+              model.firstName = ''
+              model.lastName = ''
+              model.email = ''
+              model.message = ''
+              model.sent = true
+            }
+          },
+          error: function () {
+            console.log('error in contact')
           }
-        },
-        error: function () {
-          console.log('error in contact')
-        }
-      })
+        })
+      } else {
+        model.error = true
+      }
     }
   }
 }
 </script>
 
 <style>
-
+.red {
+  color: red !important;
+}
 </style>

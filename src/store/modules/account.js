@@ -20,6 +20,10 @@ const mutations = {
   },
   [types.SET_ACCOUNT] (state, payload) {
     state.account = payload
+  },
+  [types.CLEAR_TOKEN] (state) {
+    state.token = null
+    state.account = {}
   }
 }
 
@@ -34,6 +38,9 @@ const actions = {
     $.getJSON('../../../static/account.json').done(account => {
       commit(types.SET_ACCOUNT, account)
     })
+  },
+  clearToken ({commit}) {
+    commit(types.CLEAR_TOKEN)
   }
 }
 export default {

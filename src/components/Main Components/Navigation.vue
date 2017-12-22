@@ -26,9 +26,9 @@
               <!-- Search Button-->
               <div class="search"><i class="icon-search"></i></div>
               <!-- User Not Logged - link to login page-->
-              <div class="user"> <router-link id="userdetails" :to="'/login'" class="user-link"><i class="icon-profile"></i></router-link></div>
+              <div class="user"> <router-link id="userdetails" :to="token !== null ? '/account' : '/login'" class="user-link"><i class="icon-profile"></i></router-link></div>
               <!-- Cart Dropdown-->
-              <div class="cart dropdown show"><a id="cartdetails" href="https://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="icon-cart"></i>
+              <div class="cart dropdown show"><a id="cartdetails" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="icon-cart"></i>
                   <div class="cart-no" v-if="products.length > 0">{{products.length}}</div></a><router-link :to="'/cart'" class="text-primary view-cart">View Cart</router-link>
                 <div aria-labelledby="cartdetails" class="dropdown-menu">
                   <!-- cart item-->
@@ -60,7 +60,8 @@ export default {
   computed: {
     ...mapGetters({
       products: 'getCart',
-      total: 'getTotal'
+      total: 'getTotal',
+      token: 'getToken'
     })
   },
   created () {

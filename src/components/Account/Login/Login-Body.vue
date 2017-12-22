@@ -20,6 +20,9 @@
                     <label for="password" class="form-label">Password</label>
                     <input id="password" type="password" class="form-control" v-model="password">
                   </div>
+                  <div class="form-group">
+                    <label for="password" class="form-label red" v-if="error">Invalid User ID or Password</label>
+                  </div>
                   <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" @click.prevent="Login()"><i class="fa fa-sign-in"></i>Log in</button>
                   </div>
@@ -39,15 +42,15 @@
                 <hr>
                 <form action="customer-orders.html" method="post">
                   <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="newName" class="form-label">Name</label>
                     <input id="newName" type="text" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="newEmail" class="form-label">Email</label>
                     <input id="newEmail" type="text" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="newPassword" class="form-label">Password</label>
                     <input id="newPassword" type="password" class="form-control">
                   </div>
                   <div class="form-group text-center">
@@ -77,14 +80,13 @@ export default {
         success: function (resp, textStatus, request) {
           if (request.status === 202) {
             model.$store.dispatch('setToken', resp.token)
-            model.$store.dispatch('getAccount')
             router.push('/account/orders')
           } else {
-            console.log('Unauthorized')
+            console.log('Error in response!')
           }
         },
         error: function () {
-          console.log('error in contact')
+          model.error = true
         }
       })
     }
@@ -92,12 +94,23 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: false
+    }
+  },
+  watch: {
+    email: function () {
+      this.error = false
+    },
+    password: function () {
+      this.error = false
     }
   }
 }
 </script>
 
 <style>
-
+.red{
+  color: red !important;
+}
 </style>

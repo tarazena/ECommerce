@@ -37,7 +37,10 @@ export default {
   name: 'Customer-Orders',
   computed: mapGetters({
     account: 'getAccount'
-  })
+  }),
+  beforeCreate () {
+    this.$store.dispatch('getAccount')
+  }
 }
 </script>
 

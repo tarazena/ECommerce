@@ -14,7 +14,6 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
 import CustomerHero from './Customer-Hero'
 import CustomerSidebar from './Customer-Sidebar'
 export default {
@@ -23,12 +22,6 @@ export default {
     CustomerHero,
     CustomerSidebar
   }
-  // computed: mapGetters({
-  //   products: 'allProducts'
-  // }),
-  // created () {
-  //   this.$store.dispatch('getAllProducts')
-  // }
 }
 </script>
 

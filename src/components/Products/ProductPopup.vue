@@ -66,20 +66,6 @@ export default {
   },
   methods: {
     ...mapActions(['addToCart', 'setModal'])
-    // x: () => {
-    //   this.obj = this.product
-    //   this.setModal({item: this.obj, added: true})
-    // }
-    // toggleButton: function (event) {
-    //   var obj
-    //   if (event.target.localName === 'i' || event.target.localName === 'span') {
-    //     obj = event.target.parentElement
-    //   } else {
-    //     obj = event.target
-    //   }
-    //   $(obj).find('span').text('Added').parent().addClass('green').find('i').switchClass('fa-shopping-cart', 'fa-check', 10, 'swing')
-    //   this.added = true
-    // }
   },
   data () {
     return {
