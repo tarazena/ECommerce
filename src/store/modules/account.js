@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-require('../../../static/account.json')
+var url = 'http://api-ecommerce.azurewebsites.net/v1/account'
 
 // initial state
 // shape: [{ id, quantity }]
@@ -36,7 +36,7 @@ const actions = {
     commit(types.SET_ACCOUNT, payload)
   },
   getAccount ({commit}) {
-    $.getJSON('../../../static/account.json').done(account => {
+    $.getJSON(url).done(account => {
       commit(types.SET_ACCOUNT, account)
     })
   },
