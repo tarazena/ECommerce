@@ -40,15 +40,15 @@
                 <form action="customer-orders.html" method="post">
                   <div class="form-group">
                     <label for="name" class="form-label">Name</label>
-                    <input id="name" type="text" class="form-control">
+                    <input id="newName" type="text" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" type="text" class="form-control">
+                    <input id="newEmail" type="text" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" class="form-control">
+                    <input id="newPassword" type="password" class="form-control">
                   </div>
                   <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary"><i class="icon-profile"></i>Register</button>
