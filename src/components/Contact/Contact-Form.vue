@@ -6,7 +6,7 @@
           </header>
           <div class="row">
             <div class="col-md-7">
-              <form id="contact-form" class="custom-form form">
+              <form id="contact-form" class="custom-form form" v-if="!sent" method="post" v-on:submit.prevent>
                 <div class="controls">
                   <div class="row">
                     <div class="col-sm-6">
@@ -30,9 +30,12 @@
                     <label for="message" class="form-label">Your message for us *</label>
                     <textarea rows="4" name="message" id="message" placeholder="Enter your message" required="required" class="form-control" v-model="message"></textarea>
                   </div>
-                  <button type="submit" class="btn btn-template" @click.prevent="submitForm()">Send message</button>
+                  <button type="submit" class="btn btn-template" @click="submitForm()" >Send message</button>
                 </div>
               </form>
+              <div v-else>
+                <h4>Thank you for contacting us, we will reach out to you soon!</h4>
+              </div>
             </div>
             <div class="col-md-5">
               <p>Effects present letters inquiry no an removed or friends. Desire behind latter me though in. Supposing shameless am he engrossed up additions. My possible peculiar together to. Desire so better am cannot he up before points. Remember mistaken opinions it pleasure of debating. Court front maids forty if aware their at. Chicken use are pressed removed. </p>
@@ -60,7 +63,8 @@ export default {
       firstName: '',
       lastName: '',
       email: '',
-      message: ''
+      message: '',
+      sent: false
     }
   },
   methods: {
@@ -68,15 +72,15 @@ export default {
       var model = this
       $.ajax({
         type: 'POST',
-        url: 'http://api-ecommerce.azurewebsites.net/v1/contact',
+        url: 'http://localhost/EcommerceAPIs/v1/contact',
         data: {firstName: model.firstName, lastName: model.lastName, email: model.email, message: model.message},
         success: function (resp, textStatus, request) {
-          console.log(request)
           if (request.status === 200) {
             model.firstName = ''
             model.lastName = ''
             model.email = ''
             model.message = ''
+            model.sent = true
           }
         },
         error: function () {

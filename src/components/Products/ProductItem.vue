@@ -6,7 +6,7 @@
         <img :src="'./static/products/'+ item.company + '/' + item.images[0] + '.jpg'" :alt="item.company + ' ' + item.name" class="img-fluid">
         <div class="hover-overlay d-flex align-items-center justify-content-center">
           <div class="CTA d-flex align-items-center justify-content-center">
-            <a class="add-to-cart" @click="addToCart({product: item, quantity: 1})">
+            <a class="add-to-cart" @click="addToCart({product: item, quantity: 1}); toggleButton($event);">
               <i class="fa fa-shopping-cart"></i>
               </a>
               <router-link :to="'/product-details/' + item.id" class="visit-product active">
@@ -39,8 +39,17 @@ export default {
   methods: {
     ...mapActions(['addToCart']),
     viewItemModal: function (item, id) {
-      this.$store.dispatch('setModal', item)
+      this.$store.dispatch('setModal', {item: item, added: false})
       $('#' + id).click()
+    },
+    toggleButton: function (event) {
+      var obj
+      if (event.target.localName === 'i') {
+        obj = event.target.parentElement
+      } else {
+        obj = event.target
+      }
+      $(obj).addClass('green').find('i').switchClass('fa-shopping-cart', 'fa-check', 10, 'swing')
     }
   }
 }
@@ -49,5 +58,12 @@ export default {
 <style>
 .defaultCursor {
   cursor:default
+}
+
+.green {
+  background-color: green;
+}
+.green i {
+    color: white;
 }
 </style>

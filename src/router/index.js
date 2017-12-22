@@ -53,7 +53,6 @@ export default new Router({
     },
     {
       path: '/account',
-      name: 'Account',
       component: CustomerHub,
       children: [
         {
@@ -74,6 +73,7 @@ export default new Router({
         },
         {
           path: '',
+          name: 'Account',
           component: CustomerOrders
         }
       ]

@@ -27,6 +27,7 @@ const actions = {
   getAllProducts ({ commit }) {
     $.getJSON(url).done(products => {
       commit(types.RECEIVE_PRODUCTS, { products })
+      commit(types.SET_MODAL, { item: products[0], added: false })
     })
   },
   setModal ({ commit }, payload) {

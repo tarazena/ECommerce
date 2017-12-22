@@ -6,24 +6,26 @@
           <!-- <div class="ribbon-info text-uppercase">Fresh</div>
             <div class="ribbon-primary text-uppercase">Sale</div> -->
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" style=" width:100%; height: 540px !important;">
-              <div class="carousel-item" v-for="(image, index) in product.images" :key="index" :class="{'active' : index === 0}">
-                <img :src="'../static/products/'+ product.company + '/' + image + '.jpg'" :alt="product.company + ' ' + product.name" class="d-block w-100">
+            <div class='carousel-outer'>
+              <div class="carousel-inner" style=" width:100%; height: 540px !important;">
+                <div class="carousel-item" v-for="(image, index) in product.images" :key="index" :class="{'active' : index === 0}">
+                  <img :src="'../static/products/'+ product.company + '/' + image + '.jpg'" :alt="product.company + ' ' + product.name" class="d-block w-100">
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
-              <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
             </div>
-          </div>
-          <div data-slider-id="1" class="owl-thumbs d-flex align-items-center justify-content-center">
-            <button class="owl-thumb-item" v-for="(image, index) in product.images" :key="index">
-              <img :src="'../static/products/'+ product.company + '/' + image + '.jpg'" :alt="product.company + ' ' + product.name">
-            </button>
+            <ol class='owl-thumbs carousel-indicators mCustomScrollbar d-flex align-items-center justify-content-center'>
+              <li data-target='#myCarousel' :data-slide-to='index' v-for="(image, index) in product.images" :key="index" :class='{"active": index === 0}' class="owl-thumb-item">
+                <img :src="'../static/products/'+ product.company + '/' + image + '.jpg'" :alt="product.company + ' ' + product.name"/>
+              </li>
+            </ol>
           </div>
         </div>
         <div class="details col-lg-6">
@@ -69,13 +71,17 @@
           </div>
           <ul class="CTAs list-inline">
             <li class="list-inline-item">
-              <button class="btn btn-template wide" @click="addToCart({product, quantity})">
-                <i class="icon-cart"></i>Add to Cart</button>
+              <button class="btn btn-template wide" @click="addToCart({product, quantity}); addedAnimation();" id="addToCartButton">
+                <i class="icon-cart" id="addToCartIcon"></i><span>Add to Cart</span></button>
             </li>
             <li class="list-inline-item">
               <button class="btn btn-template-outlined wide">
                 <i class="fa fa-heart-o"></i>Add to wishlist</button>
             </li>
+            <!-- <li class="list-inline-item">
+              <button class="btn btn-template-outlined wide">
+                <i class="fa fa-check" id="addToCartText"></i>Add to Cart</button>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -95,7 +101,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addToCart', 'updateQuantityInCart'])
+    ...mapActions(['addToCart', 'updateQuantityInCart']),
+    addedAnimation: () => {
+      $('#addToCartIcon').switchClass('icon-cart', 'fa fa-check', 100, 'swing').parent().addClass('green')
+      $('#addToCartButton span').text('Added')
+    }
   }
 }
 </script>
@@ -136,5 +146,44 @@ export default {
   content: '<';
   font-size: 30px;
   color: black;
+}
+
+.carousel-indicators {
+    margin: 10px 0 0;
+    position: static;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+.carousel-indicators li {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    height: auto;
+    margin: 0 !important;
+    width: auto;
+}
+.carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+    margin: 15px;
+}
+.carousel-indicators li.active img {
+    opacity: 1;
+}
+.carousel-indicators li:hover img {
+    opacity: 0.75;
+}
+.carousel-outer {
+    position: relative;
+}
+.green {
+  background-color: green;
+  border-color: green;
+}
+
+.green i {
+  color: white;
 }
 </style>

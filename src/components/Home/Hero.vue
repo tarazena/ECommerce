@@ -82,8 +82,8 @@ export default {
 
 <style>
 .carousel-control-next, .carousel-control-prev {
-  width: 40px !important;
-  height: 40px !important;
+  width: 30px !important;
+  height: 30px !important;
   border-radius: 50%;
   background: #fff;
   color: #555 !important;
@@ -102,19 +102,19 @@ export default {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-image: none;
-  top: -10px;
+  top: -5px;
   position: relative;
 }
 
 .carousel-control-next-icon:after {
   content: '>';
-  font-size: 30px;
-  color: black;
+  font-size: 20px;
+  color: gray;
 }
 
 .carousel-control-prev-icon:after {
   content: '<';
-  font-size: 30px;
-  color: black;
+  font-size: 20px;
+  color: gray;
 }
 </style>

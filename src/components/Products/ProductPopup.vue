@@ -1,20 +1,27 @@
 <template>
-<div v-if="item !== null">
-  <div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+  <div v-if="product !== null">
+    <div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
       <div role="document" class="modal-dialog">
         <div class="modal-content">
-          <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
-          <div class="modal-body"> 
+          <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+            <span aria-hidden="true">
+              <i class="icon-close"></i>
+            </span>
+          </button>
+          <div class="modal-body">
             <div class="ribbon-primary text-uppercase">Sale</div>
             <div class="row d-flex align-items-center">
-              <div class="image col-lg-5"><img :src="'./static/products/'+ item.company + '/' + item.images[0] + '.jpg'" :alt="item.company + ' ' + item.name" class="img-fluid d-block"></div>
+              <div class="image col-lg-5">
+                <img :src="'./static/products/'+ product.item.company + '/' + product.item.images[0] + '.jpg'" :alt="product.item.company + ' ' + product.item.name"
+                  class="img-fluid d-block">
+              </div>
               <div class="details col-lg-7">
-                <h2>{{item.company}} {{item.name}}</h2>
+                <h2>{{product.item.company}} {{product.item.name}}</h2>
                 <ul class="price list-inline">
-                  <li class="list-inline-item current">${{item.price}}</li>
+                  <li class="list-inline-item current">${{product.item.price}}</li>
                   <!-- <li class="list-inline-item original">$90.00</li> -->
                 </ul>
-                <p>Memory: {{item.memory}}GB</p>
+                <p>Memory: {{product.item.memory}}GB</p>
                 <div class="d-flex align-items-center">
                   <div class="quantity d-flex align-items-center">
                     <div class="dec-btn" @click="quantity > 1 ? quantity-- : quantity">-</div>
@@ -23,16 +30,28 @@
                   </div>
                 </div>
                 <ul class="CTAs list-inline">
-                  <li class="list-inline-item"><button class="btn btn-template wide"  @click="addToCart({product: item, quantity})"> <i class="fa fa-shopping-cart"></i>Add to Cart</button></li>
-                  <li class="list-inline-item"><button class="visit-product active btn btn-template-outlined wide"> <i class="icon-heart"></i>Add to wishlist</button></li>
+                  <li class="list-inline-item">
+                    <button v-if="!product.added" class="btn btn-template wide" @click="addToCart({product: product.item, quantity});setModal({item: product.item, added: true})">
+                      <i class="fa fa-shopping-cart"></i>
+                      <span>Add to Cart</span>
+                    </button>
+                    <button v-else class="btn btn-template wide green">
+                      <i class="fa fa-check"></i>
+                      <span>Added</span>
+                    </button>
+                  </li>
+                  <li class="list-inline-item">
+                    <button class="visit-product active btn btn-template-outlined wide">
+                      <i class="icon-heart"></i>Add to wishlist</button>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -42,11 +61,25 @@ export default {
   name: 'Product-Popup',
   computed: {
     ...mapGetters({
-      item: 'getModal'
+      product: 'getModal'
     })
   },
   methods: {
-    ...mapActions(['addToCart'])
+    ...mapActions(['addToCart', 'setModal'])
+    // x: () => {
+    //   this.obj = this.product
+    //   this.setModal({item: this.obj, added: true})
+    // }
+    // toggleButton: function (event) {
+    //   var obj
+    //   if (event.target.localName === 'i' || event.target.localName === 'span') {
+    //     obj = event.target.parentElement
+    //   } else {
+    //     obj = event.target
+    //   }
+    //   $(obj).find('span').text('Added').parent().addClass('green').find('i').switchClass('fa-shopping-cart', 'fa-check', 10, 'swing')
+    //   this.added = true
+    // }
   },
   data () {
     return {
@@ -57,5 +90,17 @@ export default {
 </script>
 
 <style>
+.green {
+  background-color: green;
+  border-color: green;
+}
 
+.green:hover {
+  background-color: green;
+  border-color: green;
+}
+
+.green i {
+  color: white;
+}
 </style>
