@@ -1,10 +1,10 @@
 {
   "firstName": "John",
-  "LastName": "Appleseed",
+  "lastName": "Appleseed",
   "email": "test@test.com",
   "state": "Ohio",
   "country": "USA",
-  "image": "person-2.1609195",
+  "image": "person-2",
   "orders": [
     {
       "id": "1234",

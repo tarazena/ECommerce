@@ -2,23 +2,27 @@
   <div class="customer-sidebar col-xl-3 col-lg-4 mb-md-5">
     <div class="customer-profile">
       <a href="#" class="d-inline-block">
-        <img src="../../../../static/Assets/img/person-2.jpg" class="img-fluid rounded-circle customer-image">
+        <img :src="'../../../../static/Assets/img/' + account.image + '.jpg'" class="img-fluid rounded-circle customer-image">
       </a>
-      <h5>Julie Machallova</h5>
-      <p class="text-muted text-small">Ostrava, Czech republic</p>
+      <h5>{{account.firstName}} {{account.lastName}}</h5>
+      <p class="text-muted text-small">{{account.state}}, {{account.country}}</p>
     </div>
     <nav class="list-group customer-nav">
-      <router-link v-for="(route, index) in routes" :key="index" :to="route.route" class="list-group-item d-flex justify-content-between align-items-center" :class="{'active' : route.active}">
+      <router-link v-for="(route, index) in routes" :key="index" :to="route.route" class="list-group-item d-flex justify-content-between align-items-center" :class="{'active' : $route.fullPath === route.route}">
         <span>
           <span :class="route.icon"></span>{{route.name}}</span>
-        <small class="badge badge-pill badge-primary" v-if="route.name === 'Orders'">5</small>
+        <small class="badge badge-pill badge-primary" v-if="route.name === 'Orders'">{{account.orders.length}}</small>
       </router-link>
     </nav>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Customer-Sidebar',
+  computed: mapGetters({
+    account: 'getAccount'
+  }),
   data () {
     return {
       routes: [
@@ -47,22 +51,6 @@ export default {
           active: false
         }
       ]
-    }
-  },
-  watch: {
-    // '$route' () {
-    //   this.checkActiveRoute(this.$route.path)
-    // }
-  },
-  methods: {
-    checkActiveRoute: function (route) {
-      this.routes.forEach(x => {
-        if (x.route === route) {
-          x.active = true
-        } else {
-          x.active = false
-        }
-      })
     }
   }
 }
