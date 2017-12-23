@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "clotheshub";
-  src:url("fonts/clotheshub.eot");
-  src:url("fonts/clotheshub.eot?#iefix") format("embedded-opentype"),
-    url("fonts/clotheshub.woff") format("woff"),
-    url("fonts/clotheshub.ttf") format("truetype"),
-    url("fonts/clotheshub.svg#clotheshub") format("svg");
+  src:url("./fonts/clotheshub.eot");
+  src:url("./fonts/clotheshub.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/clotheshub.woff") format("woff"),
+    url("./fonts/clotheshub.ttf") format("truetype"),
+    url("./fonts/clotheshub.svg#clotheshub") format("svg");
   font-weight: normal;
   font-style: normal;
 
