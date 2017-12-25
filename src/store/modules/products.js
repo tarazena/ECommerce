@@ -1,6 +1,6 @@
 import * as types from '../mutation-types'
 import * as $ from 'jquery'
-
+require('../../../static/product-items.json')
 // var url = 'http://api-ecommerce.azurewebsites.net/v1/getproductlist'
 var url = '../../../static/product-items.json'
 // initial state
