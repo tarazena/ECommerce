@@ -45,7 +45,15 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 text-center CTAs"><router-link :to="'/checkout'" class="btn btn-template btn-lg wide">Proceed to checkout<i class="fa fa-long-arrow-right"></i></router-link></div>
+          <div class="col-lg-6 text-center CTAs">
+              <router-link :to="'/products'" class="btn btn-template btn-lg wide">Continue Shopping
+              </router-link>
+          </div>
+          <div class="col-lg-6 text-center CTAs">
+              <router-link :to="'/checkout'" class="btn btn-template btn-lg wide">Proceed to checkout
+              <i class="fa fa-long-arrow-right"></i>
+              </router-link>
+          </div>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@
 
 <script>
 import Navigation from './components/Main Components/Navigation'
-import Footer from './components/Main Components/Footer'
+import Footer from './components/Main Components/FooterComponent'
 
 export default {
   name: 'app',

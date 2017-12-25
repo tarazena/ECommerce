@@ -1,27 +1,35 @@
 <template>
 <div>
    <cart-hero :itemsCount="products.length"></cart-hero>
-   <section class="shopping-cart">
-      <div class="container">
-        <div class="basket">
-          <div class="basket-holder">
-            <div class="basket-header">
-              <div class="row">
-                <div class="col-5">Product</div>
-                <div class="col-2">Price</div>
-                <div class="col-2">Quantity</div>
-                <div class="col-2">Total</div>
-                <div class="col-1 text-center">Remove</div>
+   <div v-if="products.length > 0">
+      <section class="shopping-cart">
+          <div class="container">
+            <div class="basket">
+              <div class="basket-holder">
+                <div class="basket-header">
+                  <div class="row">
+                    <div class="col-5">Product</div>
+                    <div class="col-2">Price</div>
+                    <div class="col-2">Quantity</div>
+                    <div class="col-2">Total</div>
+                    <div class="col-1 text-center">Remove</div>
+                  </div>
+                </div>
+                <div class="basket-body">
+                  <cart-item v-for="(item, index) in products" :key="index" :cartItem="item"></cart-item>
+                </div>
               </div>
             </div>
-            <div class="basket-body">
-              <cart-item v-for="(item, index) in products" :key="index" :cartItem="item"></cart-item>
-            </div>
           </div>
-        </div>
-      </div>
-   </section>
-   <order-details :orderTotal="total"></order-details>
+      </section>
+      <order-details :orderTotal="total"></order-details>
+   </div>
+   <div class="container" style="padding: 20px;" v-else>
+     <div class="col-lg-12 text-center CTAs">
+          <h2>Your Cart is empty!</h2>
+          <div ><router-link :to="'/products'" class="btn btn-template btn-lg wide">Continue Shopping!</router-link></div>
+       </div>
+   </div>
 </div>
 </template>
 <script>

@@ -15,6 +15,11 @@ import CustomerOrders from '@/components/Account/User Account/Customer-Orders'
 import CustomerProfile from '@/components/Account/User Account/Customer-Profile'
 import CustomerAddresses from '@/components/Account/User Account/Customer-Addresses'
 import CustomerOrderDetail from '@/components/Account/User Account/Customer-Order-Detail'
+import CheckoutAddress from '@/components/Checkout/CheckoutAddress'
+import CheckoutDelivery from '@/components/Checkout/CheckoutDelivery'
+import CheckoutPayment from '@/components/Checkout/CheckoutPayment'
+import CheckoutReview from '@/components/Checkout/CheckoutReview'
+import CheckoutConfirm from '@/components/Checkout/CheckoutConfirm'
 
 Vue.use(Vuex)
 Vue.use(Router)
@@ -80,15 +85,41 @@ export default new Router({
     },
     {
       path: '/checkout',
-      name: 'Checkout',
       component: Checkout,
-      beforeEnter: (to, from, next) => {
-        if (from.name === 'Cart') {
-          next()
-        } else {
-          next(false)
+      // beforeEnter: (to, from, next) => {
+      //   if (from.name === 'Cart') {
+      //     next()
+      //   } else {
+      //     next(false)
+      //   }
+      // },
+      children: [
+        {
+          path: 'address',
+          name: 'Checkout',
+          component: CheckoutAddress
+        },
+        {
+          path: 'delivery',
+          component: CheckoutDelivery
+        },
+        {
+          path: 'payment',
+          component: CheckoutPayment
+        },
+        {
+          path: 'review',
+          component: CheckoutReview
+        },
+        {
+          path: 'confirmation',
+          component: CheckoutConfirm
+        },
+        {
+          path: '',
+          component: CheckoutAddress
         }
-      }
+      ]
     },
     {
       path: '/contact',

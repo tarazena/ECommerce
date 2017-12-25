@@ -1,8 +1,8 @@
 import * as types from '../mutation-types'
 import * as $ from 'jquery'
 
-var url = 'http://api-ecommerce.azurewebsites.net/v1/getproductlist'
-
+// var url = 'http://api-ecommerce.azurewebsites.net/v1/getproductlist'
+var url = '../../../static/product-items.json'
 // initial state
 const state = {
   all: [],

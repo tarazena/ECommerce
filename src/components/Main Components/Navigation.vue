@@ -43,7 +43,7 @@
                   <!-- total price-->
                   <div class="dropdown-item total-price d-flex justify-content-between"><span>Total</span><strong class="text-primary">${{total}}</strong></div>
                   <!-- call to actions-->
-                  <div class="dropdown-item CTA d-flex"><router-link :to="'/cart'" class="btn btn-template wide">View Cart</router-link><a href="checkout1.html" class="btn btn-template wide">Checkout</a></div>
+                  <div class="dropdown-item CTA d-flex"><router-link :to="'/cart'" class="btn btn-template wide">View Cart</router-link><router-link :to="'/checkout'" class="btn btn-template wide">Checkout</router-link></div>
                 </div>
               </div>
             </div>
