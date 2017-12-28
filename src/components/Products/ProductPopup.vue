@@ -65,12 +65,20 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['addToCart', 'setModal'])
+    ...mapActions(['addToCart', 'setModal']),
+    resetData: function () {
+      this.quantity = 1
+    }
   },
   data () {
     return {
       quantity: 1
     }
+  },
+  created () {
+    this.$on('resetData', () => {
+      this.resetData()
+    })
   }
 }
 </script>

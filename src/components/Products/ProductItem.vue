@@ -40,6 +40,7 @@ export default {
     ...mapActions(['addToCart']),
     viewItemModal: function (item, id) {
       this.$store.dispatch('setModal', {item: item, added: false})
+      this.$parent.$refs.productPopup.$emit('resetData')
       $('#' + id).click()
     },
     toggleButton: function (event) {

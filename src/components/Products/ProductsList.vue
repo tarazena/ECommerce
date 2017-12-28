@@ -23,7 +23,7 @@
         </div>
       </div>
     </main>
-    <productPopup />
+    <productPopup ref="productPopup"/>
     </div>
 </template>
 
