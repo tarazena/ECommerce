@@ -1,7 +1,7 @@
 <template>
-        <div>
+        <div class="container">
         <div class="confirmation-icon"><i class="fa fa-check"></i></div>
-        <h2>Thank you, Julie. Your order is confirmed.</h2>
+        <h2>Thank you, {{account.firstName}}. Your order is confirmed.</h2>
         <p class="mb-5">Your order hasn't shipped yet but we will send you ane email when it does.</p>
         <p> <router-link :to="token !== null ? '/account' : '/login'" class="btn btn-template wide">View or manage your order</router-link></p>
         </div>
@@ -14,8 +14,12 @@ export default {
   name: 'Order-Confirm',
   computed: {
     ...mapGetters({
-      token: 'getToken'
+      token: 'getToken',
+      account: 'getAccount'
     })
+  },
+  created () {
+    this.$store.dispatch('clearCart')
   }
 }
 </script>

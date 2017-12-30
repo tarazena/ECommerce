@@ -20,32 +20,20 @@
                     </div>
                     <div class="basket-body">
                       <!-- Product-->
-                      <div class="item row d-flex align-items-center">
+                      <div class="item row d-flex align-items-center" v-for="(item, index) in products" :key="index">
                         <div class="col-6">
-                          <div class="d-flex align-items-center"><img src="img/shirt.png" alt="..." class="img-fluid">
-                            <div class="title"><a href="detail.html">
-                                <h6>Lose Oversised Shirt</h6><span class="text-muted">Size: Large</span></a></div>
+                          <div class="d-flex align-items-center"><img :src="'../static/Products/'+ item.product.company + '/' + item.product.images[0] + '.jpg'" :alt="item.product.company + ' ' + item.product.name" class="img-fluid">
+                            <div class="title"><router-link :to="'/product-details/' + item.product.id">
+                                <h6>{{item.product.company + ' ' + item.product.name}}</h6><span class="text-muted">{{ item.product.memory }} GB</span></router-link></div>
                           </div>
                         </div>
-                        <div class="col-2"><span>$65.00</span></div>
-                        <div class="col-2"><span>4</span></div>
-                        <div class="col-2"><span>$325.00</span></div>
-                      </div>
-                      <!-- Product-->
-                      <div class="item row d-flex align-items-center">
-                        <div class="col-6">
-                          <div class="d-flex align-items-center"><img src="img/shirt-black.png" alt="..." class="img-fluid">
-                            <div class="title"><a href="detail.html">
-                                <h6>Lose Oversised Shirt</h6><span class="text-muted">Size: Medium</span></a></div>
-                          </div>
-                        </div>
-                        <div class="col-2"><span>$65.00</span></div>
-                        <div class="col-2"><span>4</span></div>
-                        <div class="col-2"><span>$325.00</span></div>
+                        <div class="col-2"><span>${{item.product.price}}</span></div>
+                        <div class="col-2"><span>{{item.quantity}}</span></div>
+                        <div class="col-2"><span>${{item.product.price * item.quantity}}</span></div>
                       </div>
                     </div>
                   </div>
-                  <div class="total row"><span class="col-md-10 col-2">Total</span><span class="col-md-2 col-10 text-primary">$400.00</span></div>
+                  <div class="total row"><span class="col-md-10 col-2">Total</span><span class="col-md-2 col-10 text-primary">${{total}}</span></div>
                 </div>
                 <div class="CTAs d-flex justify-content-between flex-column flex-lg-row"><router-link :to="'/checkout/payment'" class="btn btn-template-outlined wide prev"><i class="fa fa-angle-left"></i>Back to payment method</router-link><router-link :to="'/checkout/confirmation'" class="btn btn-template wide next">Place an order<i class="fa fa-angle-right"></i></router-link></div>
               </div>
@@ -54,8 +42,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'Checkout-Review'
+  name: 'Checkout-Review',
+  computed: {
+    ...mapGetters({
+      products: 'getCart',
+      total: 'getTotal'
+    })
+  }
 }
 </script>
 

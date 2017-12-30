@@ -11,40 +11,40 @@
                 <form action="#">
                   <!-- Invoice Address-->
                   <div class="block-header mb-5">
-                    <h6>Invoice address                    </h6>
+                    <h6>Invoice address</h6>
                   </div>
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="firstname" class="form-label">First Name</label>
-                      <input id="firstname" type="text" name="first-name" placeholder="Enter you first name" class="form-control">
+                      <input id="firstname" type="text" name="first-name" placeholder="Enter you first name" class="form-control" :value="token !== null ? account.firstName : ''">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="lastname" class="form-label">Last Name</label>
-                      <input id="lastname" type="text" name="last-name" placeholder="Enter your last name" class="form-control">
+                      <input id="lastname" type="text" name="last-name" placeholder="Enter your last name" class="form-control" :value="token !== null ? account.lastName : ''">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="email" class="form-label">Email Address</label>
-                      <input id="email" type="email" name="email" placeholder="enter your email address" class="form-control">
+                      <input id="email" type="email" name="email" placeholder="enter your email address" class="form-control" :value="token !== null ? account.email : ''">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="street" class="form-label">Street</label>
-                      <input id="street" type="text" name="address" placeholder="Your street name" class="form-control">
+                      <input id="street" type="text" name="address" placeholder="Your street name" class="form-control" :value="token !== null ? account.orders[0].shippingAddress.address1 : ''">
                     </div>
                     <div class="form-group col-md-3">
                       <label for="city" class="form-label">City</label>
-                      <input id="city" type="text" name="city" placeholder="Your city" class="form-control">
+                      <input id="city" type="text" name="city" placeholder="Your city" class="form-control" :value="token !== null ? account.orders[0].shippingAddress.city : ''">
                     </div>
                     <div class="form-group col-md-3">
                       <label for="zip" class="form-label">ZIP</label>
-                      <input id="zip" type="text" name="zip" placeholder="ZIP code" class="form-control">
+                      <input id="zip" type="text" name="zip" placeholder="ZIP code" class="form-control" :value="token !== null ? account.orders[0].shippingAddress.zip : ''">
                     </div>
                     <div class="form-group col-md-3">
                       <label for="state" class="form-label">State</label>
-                      <input id="state" type="text" name="state" placeholder="Your state" class="form-control">
+                      <input id="state" type="text" name="state" placeholder="Your state" class="form-control" :value="token !== null ? account.orders[0].shippingAddress.state : ''">
                     </div>
                     <div class="form-group col-md-3">
                       <label for="country" class="form-label">Country</label>
-                      <input id="country" type="text" name="country" placeholder="Your country" class="form-control">
+                      <input id="country" type="text" name="country" placeholder="Your country" class="form-control" :value="token !== null ? account.orders[0].shippingAddress.country : ''">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="phone-number" class="form-label">Phone Number</label>
@@ -118,7 +118,8 @@
 
 <script>
 export default {
-  name: 'Checkout-Address'
+  name: 'Checkout-Address',
+  props: ['account', 'token']
 }
 </script>
 

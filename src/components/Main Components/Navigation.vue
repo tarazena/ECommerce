@@ -24,7 +24,7 @@
             </ul>
             <div class="right-col d-flex align-items-lg-center flex-column flex-lg-row">
               <!-- Search Button-->
-              <div class="search"><i class="icon-search"></i></div>
+              <!-- <div class="search"><i class="icon-search"></i></div> -->
               <!-- User Not Logged - link to login page-->
               <div class="user"> <router-link id="userdetails" :to="token !== null ? '/account' : '/login'" class="user-link"><i class="icon-profile"></i></router-link></div>
               <!-- Cart Dropdown-->
@@ -43,7 +43,9 @@
                   <!-- total price-->
                   <div class="dropdown-item total-price d-flex justify-content-between"><span>Total</span><strong class="text-primary">${{total}}</strong></div>
                   <!-- call to actions-->
-                  <div class="dropdown-item CTA d-flex"><router-link :to="'/cart'" class="btn btn-template wide">View Cart</router-link><router-link :to="'/checkout'" class="btn btn-template wide">Checkout</router-link></div>
+                  <div class="dropdown-item CTA d-flex"><router-link :to="'/cart'" class="btn btn-template wide" :class="{wideButton : products.length <= 0}">View Cart</router-link>
+                  <router-link :to="'/checkout'" class="btn btn-template wide" v-show="products.length > 0">Checkout</router-link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -97,5 +99,8 @@ export default {
 }
 </script>
 <style>
+.wideButton {
+  width: 100% !important;
+}
 </style>
 

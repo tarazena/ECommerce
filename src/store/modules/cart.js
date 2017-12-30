@@ -52,11 +52,35 @@ const mutations = {
   [types.REMOVE_PRODUCT_FROM_CART] (state, payload) {
     var elementPos = state.added.findIndex(x => x.product.id === payload.product.id)
     state.added.splice(elementPos, 1)
+  },
+  [types.CLEAR_CART] (state) {
+    state.added = []
+  }
+}
+const actions = {
+  addToCart ({ commit }, {product, quantity}) {
+    commit(types.ADD_PRODUCT_TO_CART, {
+      product: product,
+      quantity: quantity
+    })
+  },
+  updateQuantityInCart ({ commit }, payload) {
+    commit(types.UPDATE_QUANTITY_IN_CART, payload)
+  },
+  getCart ({ commit }) {
+    commit(types.GET_CART)
+  },
+  removeFromCart ({ commit }, payload) {
+    commit(types.REMOVE_PRODUCT_FROM_CART, payload)
+  },
+  clearCart ({ commit }) {
+    commit(types.CLEAR_CART)
   }
 }
 
 export default {
   state,
   getters,
-  mutations
+  mutations,
+  actions
 }

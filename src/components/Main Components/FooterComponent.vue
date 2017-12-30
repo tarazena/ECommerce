@@ -83,7 +83,7 @@
         <div class="container">
           <div class="row d-flex align-items-center">
             <div class="text col-md-6">
-              <p>&copy; 2017 <a href="https://ondrejsvestka.cz" target="_blank">Ondrej Svestka </a> All rights reserved.</p>
+              <p>&copy; 2018 <a href="" target="_blank">Hassan Al Rawi </a> All rights reserved.</p>
             </div>
             <div class="payment col-md-6 clearfix">
               <ul class="payment-list list-inline-item pull-right">

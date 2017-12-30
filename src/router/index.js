@@ -97,15 +97,25 @@ export default new Router({
         {
           path: 'address',
           name: 'Checkout',
-          component: CheckoutAddress
+          component: CheckoutAddress,
+          props: {
+            account: {},
+            token: ''
+          }
         },
         {
           path: 'delivery',
-          component: CheckoutDelivery
+          component: CheckoutDelivery,
+          props: {
+            account: {}
+          }
         },
         {
           path: 'payment',
-          component: CheckoutPayment
+          component: CheckoutPayment,
+          props: {
+            account: {}
+          }
         },
         {
           path: 'review',
