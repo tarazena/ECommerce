@@ -12,7 +12,7 @@
             <div class="ribbon-primary text-uppercase">Sale</div>
             <div class="row d-flex align-items-center">
               <div class="image col-lg-5">
-                <img :src="'./static/products/'+ product.item.company + '/' + product.item.images[0] + '.jpg'" :alt="product.item.company + ' ' + product.item.name"
+                <img :src="'../static/products/'+ product.item.company + '/' + product.item.images[0] + '.jpg'" :alt="product.item.company + ' ' + product.item.name"
                   class="img-fluid d-block">
               </div>
               <div class="details col-lg-7">
@@ -40,10 +40,10 @@
                       <span>Added</span>
                     </button>
                   </li>
-                  <li class="list-inline-item">
+                  <!-- <li class="list-inline-item">
                     <button class="visit-product active btn btn-template-outlined wide">
                       <i class="icon-heart"></i>Add to wishlist</button>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>

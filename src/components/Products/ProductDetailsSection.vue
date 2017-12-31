@@ -33,7 +33,7 @@
             <ul class="price list-inline no-margin">
               <li class="list-inline-item current">${{product.price}}</li>
             </ul>
-            <div class="review d-flex align-items-center">
+            <!-- <div class="review d-flex align-items-center">
               <ul class="rate list-inline">
                 <li class="list-inline-item">
                   <i class="fa fa-star-o text-primary"></i>
@@ -52,7 +52,7 @@
                 </li>
               </ul>
               <span class="text-muted">No reviews</span>
-            </div>
+            </div> -->
           </div>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
@@ -74,10 +74,10 @@
               <button class="btn btn-template wide" @click="addToCart({product, quantity}); addedAnimation();" id="addToCartButton">
                 <i class="icon-cart" id="addToCartIcon"></i><span>Add to Cart</span></button>
             </li>
-            <li class="list-inline-item">
+            <!-- <li class="list-inline-item">
               <button class="btn btn-template-outlined wide">
                 <i class="fa fa-heart-o"></i>Add to wishlist</button>
-            </li>
+            </li> -->
             <!-- <li class="list-inline-item">
               <button class="btn btn-template-outlined wide">
                 <i class="fa fa-check" id="addToCartText"></i>Add to Cart</button>
