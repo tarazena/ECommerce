@@ -88,7 +88,7 @@ export default {
   methods: {
     submitForm: function () {
       var model = this
-      if (model.firstName !== '' && model.lastName !== '' && model.email !== '' && model.message !== '') {
+      if (model.firstName !== '' && model.lastName !== '' && model.email !== '' && model.message !== '' && this.validateEmail(model.email)) {
         $.ajax({
           type: 'POST',
           url: 'http://api-ecommerce.azurewebsites.net/v1/contact',
@@ -109,6 +109,11 @@ export default {
       } else {
         model.error = true
       }
+    },
+    validateEmail: function (email) {
+      // eslint-disable-next-line
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email.toLowerCase())
     }
   }
 }
