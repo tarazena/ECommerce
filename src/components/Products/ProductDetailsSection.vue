@@ -7,7 +7,7 @@
             <div class="ribbon-primary text-uppercase">Sale</div> -->
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class='carousel-outer'>
-              <div class="carousel-inner" style=" width:100%; height: 540px !important;">
+              <div class="carousel-inner" style=" width:100%; height: 350px !important;">
                 <div class="carousel-item" v-for="(image, index) in product.images" :key="index" :class="{'active' : index === 0}">
                   <img :src="'../static/products/'+ product.company + '/' + image + '.jpg'" :alt="product.company + ' ' + product.name" class="d-block w-100">
                 </div>

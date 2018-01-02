@@ -31,6 +31,11 @@ export default {
     showSide: function () {
       return this.$route.fullPath === '/checkout/confirmation'
     }
+  },
+  created () {
+    if (this.products.length === 0) {
+      this.$router.push('home')
+    }
   }
 }
 </script>

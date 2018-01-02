@@ -10,6 +10,7 @@ import ProductDetails from '@/components/Products/ProductDetails'
 import Login from '@/components/Account/Login/Login'
 import ContactUs from '@/components/Contact/ContactUs'
 import Blog from '@/components/Blog/Blog'
+import BlogPost from '@/components/Blog/BlogPost'
 import CustomerHub from '@/components/Account/User Account/Customer-Hub'
 import CustomerOrders from '@/components/Account/User Account/Customer-Orders'
 import CustomerProfile from '@/components/Account/User Account/Customer-Profile'
@@ -40,6 +41,11 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/blogpost',
+      name: 'Blogpost',
+      component: BlogPost
     },
     {
       path: '/cart',
