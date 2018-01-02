@@ -1,13 +1,15 @@
 <template>
 <div>
   <heroSection></heroSection>
+  <categoriesSection />
+  <mensCollection />
 </div>
 </template>
 
 <script>
-import Hero from './Home/Hero.vue'
-import Categories from './Home/Categories.vue'
-import MensCollection from './Home/MensCollection.vue'
+import Hero from './Hero.vue'
+import Categories from './Categories.vue'
+import MensCollection from './MensCollection.vue'
 
 export default {
   name: 'HomePage',

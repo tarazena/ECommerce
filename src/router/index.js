@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Vuex from 'vuex'
 
 import ProductsList from '@/components/Products/ProductsList'
-import HomePage from '@/components/Home'
+import HomePage from '@/components/Home/Home'
 import Cart from '@/components/Cart/Cart'
 import Checkout from '@/components/Checkout/Checkout'
 import ProductDetails from '@/components/Products/ProductDetails'
